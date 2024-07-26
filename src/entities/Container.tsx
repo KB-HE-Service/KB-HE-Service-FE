@@ -16,7 +16,14 @@ export const MidContainer = styled(Container)`
 `;
 
 export const InputContainer = styled(Container)`
+  background-color: white;
+
   margin-top: 30px;
-  width: 70%;
+
+  width: 77%;
+  height: 200px;
+
+  border-radius: 5px;
+
   align-items: flex-start;
 `;

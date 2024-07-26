@@ -11,9 +11,10 @@ const PrivacyPage = () => (
   <>
     <Background color="#FCAF16" />
     <MidContainer>
+      <img style={{ width: "90px" }} src="/img/logo2.png" />
       <Title>서비스를 이용하기 위한</Title>
       <Title>개인 정보를 입력해주세요!</Title>
-      <div style={{ height: "15px" }}></div>
+      <div style={{ height: "5px" }}></div>
       <SubTitle>입력하신 정보는 사용 중이신 기기에만</SubTitle>
       <SubTitle>저장되니 안심하고 입력해도 됩니다.</SubTitle>
       <InputContainer>
