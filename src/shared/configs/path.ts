@@ -1,5 +1,5 @@
 export enum PAGE_URL {
-  SignIn = "/signin",
+  Privacy = "/privacy",
   Home = "/home",
 
   Setting = "/setting",

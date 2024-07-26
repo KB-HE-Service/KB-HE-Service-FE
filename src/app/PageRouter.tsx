@@ -6,6 +6,8 @@ import AuthRouter from "./AuthRouter";
 
 import { Loading } from "@/entities";
 
+const Privacy = lazy(() => import("@/pages/privacy/PrivacyPage"));
+
 import { PAGE_URL } from "@/shared";
 
 const PageRouter = () => (
@@ -15,6 +17,7 @@ const PageRouter = () => (
       <AuthRouter>
         <Routes>
           <Route>
+            <Route path={PAGE_URL.Privacy} element={<Privacy />} />
             {/* <Route index element={<Navigate to={PAGE_URL.SignIn} replace />} />
             <Route path={PAGE_URL.SignIn} element={<SignIn />} />
             <Route path={PAGE_URL.Setting} element={<Setting />} />
