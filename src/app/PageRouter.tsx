@@ -1,5 +1,10 @@
 import { Suspense, lazy } from "react";
-import { BrowserRouter as RootRouter, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as RootRouter,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 
 import AppStyles from "./AppStyles";
 import AuthRouter from "./AuthRouter";
@@ -7,6 +12,8 @@ import AuthRouter from "./AuthRouter";
 import { Loading } from "@/entities";
 
 const Privacy = lazy(() => import("@/pages/privacy/PrivacyPage"));
+const Inference = lazy(() => import("@/pages/home/InferencePage"));
+const Training = lazy(() => import("@/pages/home/TrainingPage"));
 
 import { PAGE_URL } from "@/shared";
 
@@ -17,12 +24,13 @@ const PageRouter = () => (
       <AuthRouter>
         <Routes>
           <Route>
+            <Route
+              index
+              element={<Navigate to={PAGE_URL.Inference} replace />}
+            />
             <Route path={PAGE_URL.Privacy} element={<Privacy />} />
-            {/* <Route index element={<Navigate to={PAGE_URL.SignIn} replace />} />
-            <Route path={PAGE_URL.SignIn} element={<SignIn />} />
-            <Route path={PAGE_URL.Setting} element={<Setting />} />
-            <Route path={PAGE_URL.Project} element={<Project />} />
-            <Route path={PAGE_URL.Issue} element={<Issue />} /> */}
+            <Route path={PAGE_URL.Inference} element={<Inference />} />
+            <Route path={PAGE_URL.Training} element={<Training />} />
           </Route>
         </Routes>
       </AuthRouter>

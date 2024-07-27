@@ -3,7 +3,6 @@ import {
   Title,
   SubTitle,
   MidContainer,
-  Label,
   InputContainer,
   BottomLogo,
 } from "@/entities";

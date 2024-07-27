@@ -27,3 +27,17 @@ export const InputContainer = styled(Container)`
 
   align-items: flex-start;
 `;
+
+export const WhiteContainer = styled(Container)`
+  position: fixed;
+
+  left: 0px;
+  top: 7vh;
+
+  background-color: white;
+
+  justify-content: flex-start;
+
+  width: 100%;
+  height: 83vh;
+`;

@@ -1,6 +1,12 @@
 export { Loading } from "./Loading";
 export { StatusMessage } from "./StatusMessage";
 export { Title, SubTitle, Label } from "./Title";
-export { Container, MidContainer, InputContainer } from "./Container";
+export {
+  Container,
+  MidContainer,
+  InputContainer,
+  WhiteContainer,
+} from "./Container";
+export { NavigationBar } from "./NavigationBar";
 export { Background } from "./Background";
-export { BottomLogo } from "./Logo";
+export { BottomLogo, TopLogo } from "./Logo";

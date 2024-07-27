@@ -7,7 +7,7 @@ const AuthRouter = ({ children }: { children: React.ReactNode }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!getUserInfo()) navigate(PAGE_URL.Privacy);
+    //if (!getUserInfo()) navigate(PAGE_URL.Privacy);
   }, []);
 
   return <>{children}</>;
