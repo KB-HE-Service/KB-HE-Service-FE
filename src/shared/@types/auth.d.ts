@@ -1,13 +1,10 @@
 declare namespace Auth {
-  export interface PublicKeys {
+  export interface ClientKeys {
+    clientPrivateKey: string;
     clientPublicKey: string;
-    encryptionServerPublicKey: string;
-    mainServerPublicKey: string;
   }
 
-  export interface Store extends PublicKeys {
-    clientPrivateKey: string;
-    setClientPrivateKey: (key: string) => void;
-    setPublicKey: (keys: PublicKeys) => void;
+  export interface Store extends ClientKeys {
+    setClientKeys: (keys: ClientKeys) => void;
   }
 }
