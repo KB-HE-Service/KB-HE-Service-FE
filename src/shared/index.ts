@@ -4,4 +4,4 @@ export { storeUserInfo, removeUserInfo, getUserInfo } from "./configs/local";
 
 export { AuthService } from "./hooks/services/AuthService";
 
-export { useUserStore } from "./hooks/stores/useUserStore";
+export { useAuthStore } from "./hooks/stores/useAuthStore";
