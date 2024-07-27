@@ -5,13 +5,14 @@ import {
   MidContainer,
   InputContainer,
   BottomLogo,
-  Loading,
+  FirstLoading,
 } from "@/entities";
 
 import { SelectInput } from "@/widget";
 
 const PrivacyPage = () => (
   <>
+    <FirstLoading />
     <Background color="#FCAF16" />
     <MidContainer>
       <Title>서비스를 이용하기 위한</Title>

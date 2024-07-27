@@ -1,4 +1,5 @@
 export { Loading } from "./Loading";
+export { FirstLoading } from "./FirstLoading";
 export { StatusMessage } from "./StatusMessage";
 export { Title, SubTitle, Label } from "./Title";
 export {
