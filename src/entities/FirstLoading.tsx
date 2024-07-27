@@ -2,7 +2,13 @@ import { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import { DotLoader } from "react-spinners";
 
-import { Background, MidContainer, Title, SubTitle } from "@/entities";
+import {
+  BottomLogo,
+  Background,
+  MidContainer,
+  Title,
+  SubTitle,
+} from "@/entities";
 
 export const FirstLoading = () => {
   const [show, setShow] = useState(false);
@@ -29,6 +35,7 @@ export const FirstLoading = () => {
             <div style={{ height: "20px" }}></div>
             <DotLoader color="white" size={80} speedMultiplier={0.8} />
           </MidContainer>
+          <BottomLogo />
         </Container>
       ) : null}
     </>

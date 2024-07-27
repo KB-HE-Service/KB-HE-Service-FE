@@ -11,3 +11,4 @@ export {
 export { NavigationBar } from "./NavigationBar";
 export { Background } from "./Background";
 export { BottomLogo, TopLogo } from "./Logo";
+export { Button } from "./Button";

@@ -6,6 +6,7 @@ import {
   InputContainer,
   BottomLogo,
   FirstLoading,
+  Button,
 } from "@/entities";
 
 import { SelectInput } from "@/widget";
@@ -66,6 +67,7 @@ const PrivacyPage = () => (
           onChange={() => {}}
         ></SelectInput>
       </InputContainer>
+      <Button onClick={() => {}}> 입력 완료</Button>
     </MidContainer>
     <BottomLogo />
   </>
