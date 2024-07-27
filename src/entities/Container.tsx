@@ -20,8 +20,8 @@ export const InputContainer = styled(Container)`
 
   margin-top: 30px;
 
-  width: 77%;
-  height: 200px;
+  width: 90%;
+  height: 300px;
 
   border-radius: 5px;
 

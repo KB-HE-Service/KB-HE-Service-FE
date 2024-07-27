@@ -11,12 +11,14 @@ export const SubTitle = styled.div`
 `;
 
 export const Label = styled.span`
-  font-size: 19px;
+  font-size: 20px;
   font-weight: bold;
+
+  margin-bottom: 2px;
 
   > span {
     color: #d80000;
-    margin-right: 10px;
+    margin-right: 7px;
     margin-left: 15px;
   }
 `;
