@@ -2,7 +2,7 @@ import { Global, css } from "@emotion/react";
 
 const Styles = css`
   * {
-    font-family: "Gowun Dodum", sans-serif;
+    font-family: "IBM Plex Sans KR", sans-serif;
   }
 
   body {
