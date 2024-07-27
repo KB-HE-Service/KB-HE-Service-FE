@@ -5,6 +5,7 @@ import {
   MidContainer,
   InputContainer,
   BottomLogo,
+  Loading,
 } from "@/entities";
 
 import { SelectInput } from "@/widget";
