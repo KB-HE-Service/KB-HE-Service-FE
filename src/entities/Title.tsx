@@ -22,3 +22,11 @@ export const Label = styled.span`
     margin-left: 15px;
   }
 `;
+
+export const ElementTitle = styled(Title)`
+  font-size: 20px;
+`;
+
+export const ElementSubTitle = styled(SubTitle)`
+  font-size: 15px;
+`;
