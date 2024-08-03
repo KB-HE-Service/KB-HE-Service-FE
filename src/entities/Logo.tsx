@@ -8,7 +8,7 @@ const Bottom = styled.img`
 
   z-index: -1;
 
-  width: 110px;
+  width: 130px;
 `;
 
 const Top = styled.img`
@@ -19,11 +19,11 @@ const Top = styled.img`
 
   z-index: -1;
 
-  width: 110px;
+  width: 130px;
 `;
 
 export const BottomLogo = () => (
-  <Bottom src="/img/logo2.png" alt="logo"></Bottom>
+  <Bottom src="/img/logo.png" alt="logo"></Bottom>
 );
 
-export const TopLogo = () => <Top src="/img/logo2.png" alt="logo"></Top>;
+export const TopLogo = () => <Top src="/img/logo.png" alt="logo"></Top>;

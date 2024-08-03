@@ -31,11 +31,10 @@ export const FirstLoading = () => {
             <img src="/img/character.png" style={{ marginBottom: "10px" }} />
             <SubTitle>철저한 암호화를 통한</SubTitle>
             <SubTitle>초개인화 AI 추천 서비스</SubTitle>
-            <Title>" KB HI "</Title>
-            <div style={{ height: "20px" }}></div>
+            <img src="/img/logo.png" width="140px" />
+            <div style={{ height: "50px" }}></div>
             <DotLoader color="white" size={80} speedMultiplier={0.8} />
           </MidContainer>
-          <BottomLogo />
         </Container>
       ) : null}
     </>

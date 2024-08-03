@@ -27,9 +27,11 @@ const HomeContainer = ({ children }: { children: React.ReactNode }) => {
 };
 
 const Continue = styled(Container)`
+  opacity: 0.6;
+
   margin-top: 50px;
   > img {
-    width: 120px;
+    width: 110px;
     margin-bottom: 10px;
   }
 `;
