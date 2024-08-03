@@ -1,14 +1,37 @@
-import { Background, WhiteContainer, TopLogo, NavigationBar } from "@/entities";
+import styled from "@emotion/styled";
+
+import {
+  Background,
+  WhiteContainer,
+  TopLogo,
+  NavigationBar,
+  Container,
+} from "@/entities";
 
 const HomeContainer = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <Background color="#FCAF16" />
       <TopLogo />
-      <WhiteContainer>{children}</WhiteContainer>
+      <WhiteContainer>
+        {children}
+        <Continue>
+          <img src="/img/character2.png"></img>
+          <span>안전한 초개인화 AI 서비스를 위한</span>
+          <span>KB HI의 모험은 계속됩니다!</span>
+        </Continue>
+      </WhiteContainer>
       <NavigationBar />
     </>
   );
 };
+
+const Continue = styled(Container)`
+  margin-top: 50px;
+  > img {
+    width: 120px;
+    margin-bottom: 10px;
+  }
+`;
 
 export default HomeContainer;

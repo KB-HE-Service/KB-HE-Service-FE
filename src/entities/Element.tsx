@@ -7,18 +7,18 @@ import { ElementSubTitle, ElementTitle, Container } from "@/entities";
 export const Element = ({
   title,
   subTitle,
-  id,
+  path,
 }: {
   title: string;
   subTitle: string;
-  id: string;
+  path: string;
 }) => {
   const navigation = useNavigate();
 
   return (
     <ElementContainer
       onClick={() => {
-        navigation(id);
+        navigation(path);
       }}
     >
       <ElementStyledLine />

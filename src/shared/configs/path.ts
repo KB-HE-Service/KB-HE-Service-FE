@@ -4,6 +4,9 @@ export enum PAGE_URL {
   Inferences = "/home/inferences",
   Trainings = "/home/trainings",
 
+  Inference = "/inference/:id",
+  Training = "/training/:id",
+
   Home = "/home",
 
   Setting = "/setting",
