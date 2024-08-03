@@ -1,11 +1,11 @@
 import HomeContainer from "./HomeContainer";
 
-const TrainingPage = () => {
+const TrainingsPage = () => {
   return (
     <HomeContainer>
-      <>Training</>
+      <>Trainings</>
     </HomeContainer>
   );
 };
 
-export default TrainingPage;
+export default TrainingsPage;

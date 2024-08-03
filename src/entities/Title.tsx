@@ -24,9 +24,21 @@ export const Label = styled.span`
 `;
 
 export const ElementTitle = styled(Title)`
+  position: relative;
+  width: 100%;
+
   font-size: 20px;
+
+  > svg {
+    font-size: 19px;
+    font-weight: bold;
+    margin-bottom: -2px;
+    margin-left: 5px;
+  }
 `;
 
 export const ElementSubTitle = styled(SubTitle)`
-  font-size: 15px;
+  font-size: 14px;
+
+  font-weight: normal;
 `;

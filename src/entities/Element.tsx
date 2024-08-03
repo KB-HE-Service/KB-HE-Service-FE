@@ -1,18 +1,31 @@
 import styled from "@emotion/styled";
+import { useNavigate } from "react-router";
 
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { ElementSubTitle, ElementTitle, Container } from "@/entities";
 
 export const Element = ({
   title,
   subTitle,
+  id,
 }: {
   title: string;
   subTitle: string;
+  id: string;
 }) => {
+  const navigation = useNavigate();
+
   return (
-    <ElementContainer>
+    <ElementContainer
+      onClick={() => {
+        navigation(id);
+      }}
+    >
       <ElementStyledLine />
-      <ElementTitle>{title}</ElementTitle>
+      <ElementTitle>
+        {title}
+        <ArrowForwardIosIcon />
+      </ElementTitle>
       <ElementSubTitle>{subTitle}</ElementSubTitle>
     </ElementContainer>
   );
@@ -25,7 +38,7 @@ const ElementContainer = styled(Container)`
   height: 70px;
 
   color: white;
-  background-color: #fcaf16;
+  background-color: #fcaf16e8;
 
   align-items: flex-start;
 
@@ -33,6 +46,8 @@ const ElementContainer = styled(Container)`
 
   padding-left: 20px;
   margin-top: 10px;
+
+  box-shadow: 0px 4px 4px 0 rgb(0 0 0 / 60%);
 `;
 
 const ElementStyledLine = styled.div`

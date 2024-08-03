@@ -9,10 +9,10 @@ export const NavigationBar = () => {
 
   return (
     <Container>
-      {pathname !== PAGE_URL.Inference ? (
+      {pathname !== PAGE_URL.Inferences ? (
         <Button
           onClick={() => {
-            navigation(PAGE_URL.Inference);
+            navigation(PAGE_URL.Inferences);
           }}
         >
           <div>AI 에게</div>추천 받기
@@ -22,10 +22,10 @@ export const NavigationBar = () => {
           <div>AI 에게</div>추천 받기
         </ClickedButton>
       )}
-      {pathname !== PAGE_URL.Training ? (
+      {pathname !== PAGE_URL.Trainings ? (
         <Button
           onClick={() => {
-            navigation(PAGE_URL.Training);
+            navigation(PAGE_URL.Trainings);
           }}
         >
           <div>AI 개발에</div>기여하기

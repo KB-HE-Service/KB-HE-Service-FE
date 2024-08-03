@@ -12,8 +12,8 @@ import AuthRouter from "./AuthRouter";
 import { Loading } from "@/entities";
 
 const Privacy = lazy(() => import("@/pages/privacy/PrivacyPage"));
-const Inference = lazy(() => import("@/pages/home/InferencePage"));
-const Training = lazy(() => import("@/pages/home/TrainingPage"));
+const Inferences = lazy(() => import("@/pages/home/InferencesPage"));
+const Trainings = lazy(() => import("@/pages/home/TrainingsPage"));
 
 import { PAGE_URL } from "@/shared";
 
@@ -26,11 +26,11 @@ const PageRouter = () => (
           <Route>
             <Route
               index
-              element={<Navigate to={PAGE_URL.Inference} replace />}
+              element={<Navigate to={PAGE_URL.Inferences} replace />}
             />
             <Route path={PAGE_URL.Privacy} element={<Privacy />} />
-            <Route path={PAGE_URL.Inference} element={<Inference />} />
-            <Route path={PAGE_URL.Training} element={<Training />} />
+            <Route path={PAGE_URL.Inferences} element={<Inferences />} />
+            <Route path={PAGE_URL.Trainings} element={<Trainings />} />
           </Route>
         </Routes>
       </AuthRouter>
