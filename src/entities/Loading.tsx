@@ -46,7 +46,9 @@ const Container = styled.div`
   justify-content: center;
   align-items: flex-end;
 
+  font-size: 18px;
+
   > img {
-    margin-left: 10px;
+    margin-left: 5px;
   }
 `;
