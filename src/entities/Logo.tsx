@@ -13,7 +13,7 @@ const Bottom = styled.img`
 
 const Top = styled.img`
   position: fixed;
-  top: 4px;
+  top: 2px;
   left: 50%;
   transform: translate(-50%, 0%);
 

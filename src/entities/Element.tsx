@@ -45,7 +45,7 @@ const ElementContainer = styled(Container)`
   border-radius: 5px;
 
   padding-left: 20px;
-  margin-top: 10px;
+  margin-top: 15px;
 
   box-shadow: 0px 4px 4px 0 rgb(0 0 0 / 60%);
 `;
