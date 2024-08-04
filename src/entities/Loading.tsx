@@ -2,21 +2,19 @@ import styled from "@emotion/styled";
 
 import { DotLoader } from "react-spinners";
 
-export const Loading = () => {
-  return (
-    <LoadingWrapper>
-      <Container>
-        <span>
-          <div>사용자의 소중한 개인 정보를</div>
-          <div>안전하게 암호화하고 있습니다...</div>
-        </span>
-        <img src="/img/character3.png" width={50} />
-      </Container>
-      <div style={{ height: "10px" }}></div>
-      <DotLoader color="white" size={100} speedMultiplier={0.8} />
-    </LoadingWrapper>
-  );
-};
+export const Loading = () => (
+  <LoadingWrapper>
+    <Container>
+      <span>
+        <div>사용자의 소중한 개인 정보를 안전하게</div>
+        <div>암호화하여 처리하고 있습니다!</div>
+      </span>
+      <img src="/img/character3.png" width={50} />
+    </Container>
+    <div style={{ height: "10px" }}></div>
+    <DotLoader color="white" size={80} speedMultiplier={0.8} />
+  </LoadingWrapper>
+);
 
 export const LoadingWrapper = styled.div`
   position: fixed;
@@ -40,7 +38,8 @@ export const LoadingWrapper = styled.div`
 
 const Container = styled.div`
   position: absolute;
-  bottom: 30px;
+
+  bottom: 40px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -49,6 +48,6 @@ const Container = styled.div`
   font-size: 18px;
 
   > img {
-    margin-left: 5px;
+    margin-left: 10px;
   }
 `;

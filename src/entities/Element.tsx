@@ -47,7 +47,7 @@ const ElementContainer = styled(Container)`
   padding-left: 20px;
   margin-top: 15px;
 
-  box-shadow: 0px 4px 4px 0 rgb(0 0 0 / 60%);
+  box-shadow: 0px 4px 4px 0 rgb(0 0 0 / 45%);
 `;
 
 const ElementStyledLine = styled.div`
