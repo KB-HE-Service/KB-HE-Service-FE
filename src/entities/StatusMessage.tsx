@@ -27,7 +27,7 @@ export const StatusMessage = ({
 
 const MessageContainer = styled.div<{ show: boolean }>`
   display: ${({ show }) => (show ? "block" : "none")};
-  background-color: #4444ff;
+  background-color: #e6a21a;
   color: white;
   padding: 10px 20px;
   border-radius: 5px;

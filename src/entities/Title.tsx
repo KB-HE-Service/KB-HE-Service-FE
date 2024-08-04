@@ -10,6 +10,12 @@ export const SubTitle = styled.div`
   font-weight: lighter;
 `;
 
+export const Explanation = styled.div`
+  font-size: 17px;
+  color: gray;
+  font-weight: lighter;
+`;
+
 export const Label = styled.span`
   font-size: 20px;
   font-weight: bold;
