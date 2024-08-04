@@ -1,6 +1,5 @@
-import HomeContainer from "./HomeContainer";
-
 import { Element } from "@/entities";
+import { HomeContainer } from "@/widget";
 
 const TrainingsPage = () => {
   return (

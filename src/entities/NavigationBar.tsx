@@ -22,6 +22,11 @@ export const NavigationBar = () => {
           <div>AI 에게</div>추천 받기
         </ClickedButton>
       )}
+      {pathname === PAGE_URL.Trainings || pathname === PAGE_URL.Inferences ? (
+        <div style={{ width: "2px" }}></div>
+      ) : (
+        <MidLine />
+      )}
       {pathname !== PAGE_URL.Trainings ? (
         <Button
           onClick={() => {
@@ -38,6 +43,17 @@ export const NavigationBar = () => {
     </Container>
   );
 };
+
+const MidLine = styled.div`
+  position: relative;
+
+  top: 25%;
+  height: 50%;
+  width: 2px;
+  background-color: #ffffffa7;
+
+  border-radius: 20;
+`;
 
 const Container = styled.div`
   display: flex;
@@ -67,9 +83,6 @@ const Button = styled.div`
   color: white;
   font-size: 25px;
   border-radius: 0 0 10px 10px;
-
-  margin-left: 10px;
-  margin-right: 10px;
 
   > div {
     margin-top: 6px;
