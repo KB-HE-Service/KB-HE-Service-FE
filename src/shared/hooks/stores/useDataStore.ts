@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-export const useSocketStore = create<Socket.Store>((set) => ({
+export const useDataStore = create<Socket.DataStore>((set) => ({
   //State
   clientId: undefined, //메인 서버로 부터 할당 받은 자기의 식별자
   myEncData: undefined, //암호화 서버로부터 받은 자기의 암호화 이진 데이터

@@ -1,12 +1,12 @@
-import { useSocketStore } from "@/shared";
+import { useDataStore } from "@/shared";
 
 const URL = import.meta.env.VITE_MAIN_SERVER_URL;
 
 export const MainSocketService = () => {
-  const setClientId = useSocketStore((state) => state.setClientId);
+  const setClientId = useDataStore((state) => state.setClientId);
 
-  const someoneEncData = useSocketStore((state) => state.someoneEncData);
-  const myEncData = useSocketStore((state) => state.myEncData);
+  const someoneEncData = useDataStore((state) => state.someoneEncData);
+  const myEncData = useDataStore((state) => state.myEncData);
 
   return {};
 };
