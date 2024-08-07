@@ -13,6 +13,7 @@ export {
   Container,
   MidContainer,
   InputContainer,
+  SmallInputContainer,
   WhiteContainer,
 } from "./Container";
 export { NavigationBar } from "./NavigationBar";

@@ -28,6 +28,19 @@ export const InputContainer = styled(Container)`
   align-items: flex-start;
 `;
 
+export const SmallInputContainer = styled(Container)`
+  background-color: white;
+
+  margin-top: 30px;
+
+  width: 90%;
+  height: 200px;
+
+  border-radius: 5px;
+
+  align-items: flex-start;
+`;
+
 export const WhiteContainer = styled(Container)`
   position: fixed;
 
