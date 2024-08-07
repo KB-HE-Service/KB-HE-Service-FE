@@ -6,14 +6,14 @@ import {
   Button,
 } from "@/entities";
 
-import { useLocation } from "react-router";
+import { useParams } from "react-router";
 
-import { HomeContainer } from "@/widget";
-
-import { SelectInput } from "@/widget";
+import { HomeContainer, SelectInput } from "@/widget";
 
 const AdditionalPrivacyPage = () => {
-  const data = useLocation().state;
+  const { id } = useParams();
+
+  console.log(id);
 
   return (
     <HomeContainer>

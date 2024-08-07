@@ -10,6 +10,7 @@ declare namespace Model {
     option: Option;
   }
   export interface Model {
+    id: string;
     name: string;
     explanation: string;
     query: Query[];
@@ -20,7 +21,7 @@ declare namespace Model {
     inferenceModels: Model[];
     trainingModels: Model[];
 
-    //Set function
+    //Set Function
     setInferenceModels: (models: Model[]) => void;
     setTrainingModels: (models: Model[]) => void;
   }
