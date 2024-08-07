@@ -8,7 +8,7 @@ const Bottom = styled.img`
 
   z-index: -1;
 
-  width: 130px;
+  width: 170px;
 `;
 
 const Top = styled.img`

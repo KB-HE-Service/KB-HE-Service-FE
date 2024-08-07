@@ -14,7 +14,7 @@ const AuthRouter = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     console.log(snowflacke());
     setClientId(snowflacke());
-    //if (!getUserInfo()) navigate(PAGE_URL.Privacy);
+    if (!getUserInfo()) navigate(PAGE_URL.Privacy);
   }, []);
 
   return <>{children}</>;

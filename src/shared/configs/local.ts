@@ -1,6 +1,6 @@
 const storageKey = "USER_DEFAULT_PRIVACY";
 
-export const storeUserInfo = (info: Model.Datas): void => {
+export const storeUserInfo = (info: Model.DefaultDatas): void => {
   localStorage.setItem(storageKey, JSON.stringify(info));
 };
 export const removeUserInfo = (): void => {

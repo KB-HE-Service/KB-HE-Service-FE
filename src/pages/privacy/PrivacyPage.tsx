@@ -1,4 +1,5 @@
 import { SingleValue } from "react-select";
+import { useNavigate } from "react-router";
 
 import {
   Background,
@@ -13,7 +14,7 @@ import {
 
 import { SelectInput } from "@/widget";
 
-import { defaultPrivacy } from "@/shared";
+import { defaultPrivacy, storeUserInfo, PAGE_URL } from "@/shared";
 import { useRef } from "react";
 
 const PrivacyPage = () => {
@@ -23,6 +24,8 @@ const PrivacyPage = () => {
     { id: "d-2", value: "" },
     { id: "d-3", value: "" },
   ]);
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -53,12 +56,15 @@ const PrivacyPage = () => {
         </InputContainer>
         <Button
           onClick={() => {
-            console.log(datas);
+            if (!datas.current.find((data) => data.value === "")) {
+              storeUserInfo(datas.current);
+              navigate(PAGE_URL.Inferences);
+            }
           }}
-          condition={!datas.current.find((data) => data.value === "")}
         >
           입력 완료
         </Button>
+        <div style={{ height: "40px" }}></div>
       </MidContainer>
       <BottomLogo />
     </>
