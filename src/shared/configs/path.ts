@@ -10,4 +10,5 @@ export enum PAGE_URL {
   Home = "/home",
 
   Setting = "/setting",
+  AdditionalPrivacy = "/additionalprivacy",
 }

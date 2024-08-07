@@ -18,6 +18,10 @@ const Trainings = lazy(() => import("@/pages/home/TrainingsPage"));
 const Inference = lazy(() => import("@/pages/inference/InferencePage"));
 const Training = lazy(() => import("@/pages/training/TrainingPage"));
 
+const AdditionalPrivacy = lazy(
+  () => import("@/pages/privacy/AdditionalPrivacyPage")
+);
+
 import { PAGE_URL } from "@/shared";
 
 const PageRouter = () => (
@@ -36,6 +40,10 @@ const PageRouter = () => (
             <Route path={PAGE_URL.Trainings} element={<Trainings />} />
             <Route path={PAGE_URL.Inference} element={<Inference />} />
             <Route path={PAGE_URL.Training} element={<Training />} />
+            <Route
+              path={PAGE_URL.AdditionalPrivacy}
+              element={<AdditionalPrivacy />}
+            />
           </Route>
         </Routes>
       </AuthRouter>

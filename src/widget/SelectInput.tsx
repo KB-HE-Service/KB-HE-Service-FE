@@ -57,7 +57,7 @@ export const SelectInput = ({
 }: {
   required?: boolean;
   label: string;
-  option: { label: string; value: string }[];
+  option: Model.Option;
   onChange: () => void;
 }) => (
   <Container>

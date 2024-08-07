@@ -13,6 +13,7 @@ import { HomeContainer } from "@/widget";
 
 const TrainingPage = () => {
   const { id } = useParams();
+
   return (
     <>
       <HomeContainer>
