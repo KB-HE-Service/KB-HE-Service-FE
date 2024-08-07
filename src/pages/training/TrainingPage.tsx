@@ -1,7 +1,6 @@
 import { useParams } from "react-router";
 
 import {
-  Loading,
   MidContainer,
   SubTitle,
   Title,

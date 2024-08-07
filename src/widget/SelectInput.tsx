@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import Select, { StylesConfig } from "react-select";
+import Select, { StylesConfig, SingleValue } from "react-select";
 
 import { Label } from "@/entities";
 
@@ -58,7 +58,7 @@ export const SelectInput = ({
   required?: boolean;
   label: string;
   option: Model.Option;
-  onChange: () => void;
+  onChange: (newValue: SingleValue<{ label: string; value: string }>) => void;
 }) => (
   <Container>
     <Label>
@@ -72,6 +72,7 @@ export const SelectInput = ({
       components={{
         IndicatorSeparator: () => null,
       }}
+      onChange={onChange}
     />
   </Container>
 );

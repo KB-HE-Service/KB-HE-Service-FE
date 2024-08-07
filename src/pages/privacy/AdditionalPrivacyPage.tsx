@@ -69,7 +69,7 @@ const AdditionalPrivacyPage = () => {
             onChange={() => {}}
           ></SelectInput>
         </InputContainer>
-        <Button onClick={() => {}}> 입력 완료</Button>
+        <Button onClick={() => {}}>AI 결과 확인하기!</Button>
       </MidContainer>
     </HomeContainer>
   );

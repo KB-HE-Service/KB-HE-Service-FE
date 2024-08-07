@@ -3,10 +3,20 @@ import styled from "@emotion/styled";
 export const Button = ({
   onClick,
   children,
+  condition,
 }: {
   onClick: () => void;
   children: React.ReactNode;
-}) => <StyledButton onClick={onClick}>{children}</StyledButton>;
+  condition?: boolean;
+}) => (
+  <>
+    {condition !== undefined && !condition ? (
+      <OffStyledButton>{children}</OffStyledButton>
+    ) : (
+      <StyledButton onClick={onClick}>{children}</StyledButton>
+    )}
+  </>
+);
 
 const StyledButton = styled.div`
   display: flex;
@@ -26,4 +36,10 @@ const StyledButton = styled.div`
   border: 3px solid #f0a000;
 
   background-color: #eb9c00;
+`;
+
+const OffStyledButton = styled(StyledButton)`
+  background-color: #cfcfcf;
+
+  border: 3px solid #d6d6d6;
 `;
