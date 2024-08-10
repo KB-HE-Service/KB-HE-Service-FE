@@ -10,21 +10,26 @@ import {
   Button,
 } from "@/entities";
 import { HomeContainer } from "@/widget";
-import { useDataStore } from "@/shared";
+import { useDataStore, useModelsStore } from "@/shared";
 import { createSnowflake } from "@/utils";
 
 const InferencePage = () => {
   const { id } = useParams();
   const navigation = useNavigate();
 
+  const inferenceModels = useModelsStore((state) => state.inferenceModels);
+
+  const resetOriginDatas = useDataStore((state) => state.resetOriginDatas);
   const setClientId = useDataStore((state) => state.setClientId);
   const setModelId = useDataStore((state) => state.setModelId);
+
   const snowflacke = createSnowflake();
 
   useEffect(() => {
     if (id) {
       setClientId(snowflacke());
       setModelId(id);
+      resetOriginDatas(inferenceModels.find((model) => model.id === id)!);
     }
   }, []);
 

@@ -1,4 +1,8 @@
 import { useParams, useNavigate } from "react-router";
+import { useEffect } from "react";
+
+import "react-step-progress-bar/styles.css";
+import { ProgressBar } from "react-step-progress-bar";
 
 import {
   MidContainer,
@@ -10,14 +14,28 @@ import {
   Button,
 } from "@/entities";
 import { HomeContainer } from "@/widget";
-
-import "react-step-progress-bar/styles.css";
-import { ProgressBar } from "react-step-progress-bar";
-import { PAGE_URL } from "@/shared";
+import { useDataStore, useModelsStore } from "@/shared";
+import { createSnowflake } from "@/utils";
 
 const TrainingPage = () => {
   const { id } = useParams();
   const navigation = useNavigate();
+
+  const trainingModels = useModelsStore((state) => state.trainingModels);
+
+  const resetOriginDatas = useDataStore((state) => state.resetOriginDatas);
+  const setClientId = useDataStore((state) => state.setClientId);
+  const setModelId = useDataStore((state) => state.setModelId);
+
+  const snowflacke = createSnowflake();
+
+  useEffect(() => {
+    if (id) {
+      setClientId(snowflacke());
+      setModelId(id);
+      resetOriginDatas(trainingModels.find((model) => model.id === id)!);
+    }
+  }, []);
 
   return (
     <>
