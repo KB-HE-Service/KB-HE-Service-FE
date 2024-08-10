@@ -35,6 +35,7 @@ declare namespace Socket {
   export interface DataStore {
     //State
     modelId: string | undefined;
+    model: Model.Model | Model.TrainingModel | undefined;
     clientId: string | undefined; //메인 서버로 부터 할당 받은 자기의 식별자
     encClientId: string | undefined; //암호화 서버로부터 받은 자기의 암호화 식별자
     originDatas: Model.Datas; //유저가 입력한 개인 정보
@@ -45,6 +46,8 @@ declare namespace Socket {
 
     //Set Function
     setModelId: (id: string) => void;
+    setModel: (model: Model.Model | Model.TrainingModel) => void;
+    getQuery: () => Model.Query[];
     setClientId: (id: string) => void;
     setEncClientId: (id: string) => void;
     resetOriginDatas: (model: Model.Model | Model.TrainingModel) => void;

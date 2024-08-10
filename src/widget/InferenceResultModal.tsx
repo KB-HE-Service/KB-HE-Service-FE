@@ -15,7 +15,7 @@ export const InferenceResultModal = ({
       <Background color="#0000008f" onClick={onClose} zIndex />
       <Container>
         <Title>{name}</Title>
-        {result}
+        <span>{result}</span>
       </Container>
     </>
   );
@@ -29,4 +29,8 @@ const Container = styled(MidContainer)`
   border-radius: 10px;
 
   z-index: 11;
+
+  > span {
+    width: 80%;
+  }
 `;

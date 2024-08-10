@@ -4,11 +4,6 @@ import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
 
 import { HomeContainer, SelectInput, InferenceResultModal } from "@/widget";
-import {
-  encryptWithPublicKey,
-  decryptWithPrivateKey,
-  generateRSAKeyPair,
-} from "@/utils";
 
 import {
   Title,
@@ -20,7 +15,7 @@ import {
   MidPointLine,
 } from "@/entities";
 
-import { EncRestService } from "@/shared";
+import { EncRestService, useDataStore, useModelsStore } from "@/shared";
 
 const AdditionalPrivacyPage = () => {
   const { id } = useParams();
@@ -28,68 +23,67 @@ const AdditionalPrivacyPage = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [result, onResult] = useState(false);
 
-  const condition = true;
+  const [isInference, setIsInference] = useState(true);
+  const [addtionalQuery, setAddtionalQuery] = useState<Model.Query[]>([]);
 
-  const { postTrainingEnc } = EncRestService();
+  const { postTrainingEnc, postInferenceEnc } = EncRestService();
+
+  const inferenceModels = useModelsStore((state) => state.inferenceModels);
+
+  const model = useDataStore((state) => state.model);
+  const inferenceResult = useDataStore((state) => state.inferenceResult);
+  const getQuery = useDataStore((state) => state.getQuery);
+  const setOriginData = useDataStore((state) => state.setOriginData);
 
   useEffect(() => {
-    postTrainingEnc();
-  }, []);
+    if (!inferenceModels.find((model) => model.id === id))
+      setIsInference(false);
+    setAddtionalQuery(getQuery());
+  }, [model]);
+
+  useEffect(() => {
+    setOriginData("LABEL", `${currentStep}`);
+  }, [currentStep]);
 
   return (
     <>
-      {result ? (
+      {result && model && inferenceResult ? (
         <InferenceResultModal
           onClose={() => {
             onResult(false);
           }}
-          result={"어쩌고저쩌고"}
-          name={"KB 다이렉트 건강맞춤보장보험 AI"}
+          result={inferenceResult}
+          name={model.explanation}
         />
       ) : null}
       <HomeContainer>
         <MidContainer>
           <Title>
-            {condition ? "AI 서비스를 이용하기" : "AI 개발에 기여하기"} 위한
+            {isInference ? "AI 서비스를 이용하기" : "AI 개발에 기여하기"} 위한
           </Title>
           <Title>정보를 추가로 입력해주세요!</Title>
           <div style={{ height: "5px" }}></div>
           <SubTitle>입력하신 정보는 모두 안전하게</SubTitle>
           <SubTitle>암호화되어 처리되니 안심하고 입력해도 됩니다.</SubTitle>
           <SmallInputContainer>
-            <SelectInput
-              required
-              label="성별"
-              option={[
-                { label: "남자", value: "0" },
-                { label: "여성", value: "1" },
-              ]}
-              onChange={() => {}}
-            ></SelectInput>
-            <SelectInput
-              required
-              label="소득 분위"
-              option={[
-                { label: "남자", value: "0" },
-                { label: "여성", value: "1" },
-              ]}
-              onChange={() => {}}
-            ></SelectInput>
-            <SelectInput
-              required
-              label="가족 구성원"
-              option={[
-                { label: "남자", value: "0" },
-                { label: "여성", value: "1" },
-              ]}
-              onChange={() => {}}
-            ></SelectInput>
+            {addtionalQuery.map((element) => (
+              <SelectInput
+                key={element.id}
+                required
+                label={element.label}
+                option={element.option}
+                onChange={(newValue) => {
+                  if (newValue) setOriginData(element.id, newValue.value);
+                }}
+              ></SelectInput>
+            ))}
           </SmallInputContainer>
-          {condition ? null : (
+          {isInference ? null : (
             <>
               <MidPointLine />
               <div style={{ height: "10px" }}></div>
-              <Label>{"Label"}을(를) 어느 정도로 선호하시나요?</Label>
+              <Label>{(model as Model.TrainingModel).labelName}을(를)</Label>
+              <Label>어느 정도로 선호하시나요?</Label>
 
               <div style={{ height: "20px" }}></div>
               <ProgressBar
@@ -125,10 +119,15 @@ const AdditionalPrivacyPage = () => {
           )}
           <Button
             onClick={() => {
-              condition && onResult(true);
+              if (isInference) {
+                onResult(true);
+                postInferenceEnc();
+              } else {
+                postTrainingEnc();
+              }
             }}
           >
-            {condition ? "AI 결과 확인하기!" : "AI 개발에 기여하기!"}
+            {isInference ? "AI 결과 확인하기!" : "AI 개발에 기여하기!"}
           </Button>
         </MidContainer>
       </HomeContainer>
