@@ -10,9 +10,9 @@ export const DecSocketService = () => {
   const socket = useDecSocketStore((state) => state.socket);
   const addMessage = useDecSocketStore((state) => state.addMessage);
 
-  const onOpen = () => {
+  const onOpen = (id: string) => {
     //create socket
-    const newSocket = new WebSocket(URL);
+    const newSocket = new WebSocket(`${URL}:ws/${id}`);
 
     //setting socket
     newSocket.onclose = (error) => {
@@ -21,13 +21,19 @@ export const DecSocketService = () => {
     newSocket.onerror = (error) => {
       console.log(error);
     };
-    newSocket.onmessage = (event: MessageEvent<ArrayBuffer>) => {
-      addMessage(event.data);
+
+    newSocket.onmessage = (event: MessageEvent<string>) => {
+      addMessage(JSON.parse(event.data));
     };
 
     //send id message
     if (newSocket.readyState === WebSocket.OPEN && clientId) {
-      newSocket.send(clientId);
+      newSocket.send(
+        JSON.stringify({
+          mode: "ID",
+          id: clientId,
+        })
+      );
     } else {
       console.log("There is something wrong with dec server socket");
       return;
@@ -40,9 +46,9 @@ export const DecSocketService = () => {
     socket?.close();
   };
 
-  const sendMessage = (data: ArrayBuffer) => {
+  const sendMessage = (data: Socket.DecServerMessageDto) => {
     if (socket && socket.readyState === WebSocket.OPEN) {
-      socket.send(data);
+      socket.send(JSON.stringify(data));
     } else console.log("There is something wrong with dec server socket");
   };
 

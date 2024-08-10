@@ -1,29 +1,53 @@
 declare namespace Socket {
+  //DTO
+  export interface IdSendDto {
+    mode: "ID";
+    id: string;
+  }
+
+  export interface InferenceSendDto {
+    mode: "INFERENCE";
+    id: string;
+    data: string;
+  }
+
+  export interface TokenDto {
+    mode: "TOKEN";
+    token: string;
+  }
+
+  export interface InferenceReceiveDto {
+    mode: "RESULT";
+    result: string;
+  }
+
+  export interface TrainingReqDto {
+    data: string;
+    ladel: string;
+  }
+
+  export type MainServerMessageDto =
+    | Socket.IdSendDto
+    | Socket.InferenceSendDto
+    | Socket.TokenDto;
+
+  export type DecServerMessageDto =
+    | Socket.IdSendDto
+    | Socket.InferenceReceiveDto
+    | Socket.TokenDto;
+
+  //Store
   export interface DataStore {
     //State
     clientId: string | undefined; //메인 서버로 부터 할당 받은 자기의 식별자
-    myEncData: ArrayBuffer | undefined; //암호화 서버로부터 받은 자기의 암호화 이진 데이터
-    someoneEncData: ArrayBuffer | undefined; //복호화 서버로부터 받은 임의 암호화 이진 데이터
+    myEncData: string | undefined; //암호화 서버로부터 받은 자기의 암호화 이진 데이터
+    someoneEncData: string | undefined; //복호화 서버로부터 받은 임의 암호화 이진 데이터
     inferenceResult: string | undefined; //AI 추론 결과 값
 
     //Set Function
     setClientId: (id: string) => void;
-    setMyEncData: (data: ArrayBuffer) => void;
-    setSomeoneEncData: (data: ArrayBuffer) => void;
-    setInferenceResult: (result: string) => void;
-  }
-
-  export interface MainSocketStore {
-    //State
-    clientId: string | undefined; //메인 서버로 부터 할당 받은 자기의 식별자
-    myEncData: ArrayBuffer | undefined; //암호화 서버로부터 받은 자기의 암호화 이진 데이터
-    someoneEncData: ArrayBuffer | undefined; //복호화 서버로부터 받은 임의 암호화 이진 데이터
-    inferenceResult: string | undefined; //AI 추론 결과 값
-
-    //Set Function
-    setClientId: (id: string) => void;
-    setMyEncData: (data: ArrayBuffer) => void;
-    setSomeoneEncData: (data: ArrayBuffer) => void;
+    setMyEncData: (data: string) => void;
+    setSomeoneEncData: (data: string) => void;
     setInferenceResult: (result: string) => void;
   }
 

@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 export const useDecSocketStore = create<
-  Socket.SocketStore<string | ArrayBuffer>
+  Socket.SocketStore<Socket.DecServerMessageDto>
 >((set) => ({
   socket: undefined,
   messages: [],
@@ -9,6 +9,7 @@ export const useDecSocketStore = create<
   setSocket: (socket) => {
     set(() => ({
       socket: socket,
+      messages: [],
     }));
   },
 
