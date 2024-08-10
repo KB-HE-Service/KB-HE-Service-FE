@@ -1,5 +1,10 @@
 import styled from "@emotion/styled";
 
+export const LargeTitle = styled.div`
+  font-size: 37px;
+  font-weight: bold;
+`;
+
 export const Title = styled.div`
   font-size: 30px;
   font-weight: bold;

@@ -2,13 +2,17 @@ import { useParams } from "react-router";
 
 import {
   MidContainer,
-  SubTitle,
   Title,
+  SubTitle,
+  LargeTitle,
   Explanation,
   MidPointLine,
   Button,
 } from "@/entities";
 import { HomeContainer } from "@/widget";
+
+import "react-step-progress-bar/styles.css";
+import { ProgressBar, Step } from "react-step-progress-bar";
 
 const TrainingPage = () => {
   const { id } = useParams();
@@ -17,12 +21,24 @@ const TrainingPage = () => {
     <>
       <HomeContainer>
         <MidContainer>
-          <div style={{ height: "100px" }}></div>
-          <Title>KB 보험 추천 AI</Title>
+          <LargeTitle>KB 보험 추천 AI</LargeTitle>
           <MidPointLine />
           <SubTitle>사용자에 가장 적합한 보험을 추천하는 AI입니다.</SubTitle>
           <SubTitle>하단 버튼을 누르면 AI 개발에 기여할 수 있습니다.</SubTitle>
-          <div style={{ height: "60px" }}></div>
+          <div style={{ height: "25px" }}></div>
+
+          <Title>학습 진행도</Title>
+          <div style={{ height: "10px" }}></div>
+          <SubTitle>여러분의 도움으로 이만큼 똑똑해지고 있어요!</SubTitle>
+          <div style={{ height: "6px" }}></div>
+          <ProgressBar
+            percent={30}
+            width={348}
+            height={30}
+            filledBackground="linear-gradient(to right, #f0a00088, #f0a000)"
+          ></ProgressBar>
+
+          <div style={{ height: "40px" }}></div>
           <img
             src="/img/character.png"
             style={{ width: "120px", marginBottom: "10px" }}

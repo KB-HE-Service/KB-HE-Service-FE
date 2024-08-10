@@ -17,6 +17,12 @@ declare namespace Model {
     query: Query[];
   }
 
+  export interface TrainingModel extends Model {
+    label: string;
+    trainingsGoal: number;
+    trainingStatus: number;
+  }
+
   export type Datas = { id: string; value: string }[];
   export type DefaultDatas = [
     { id: "d-0"; value: string },
@@ -28,10 +34,10 @@ declare namespace Model {
   export interface Store {
     //State
     inferenceModels: Model[];
-    trainingModels: Model[];
+    trainingModels: TrainingModel[];
 
     //Set Function
     setInferenceModels: (models: Model[]) => void;
-    setTrainingModels: (models: Model[]) => void;
+    setTrainingModels: (models: TrainingModel[]) => void;
   }
 }

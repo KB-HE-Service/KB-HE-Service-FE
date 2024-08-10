@@ -1,3 +1,10 @@
+import { useParams } from "react-router";
+import { useState } from "react";
+import "react-step-progress-bar/styles.css";
+import { ProgressBar, Step } from "react-step-progress-bar";
+
+import { HomeContainer, SelectInput } from "@/widget";
+
 import {
   Title,
   SubTitle,
@@ -8,12 +15,10 @@ import {
   MidPointLine,
 } from "@/entities";
 
-import { useParams } from "react-router";
-
-import { HomeContainer, SelectInput } from "@/widget";
-
 const AdditionalPrivacyPage = () => {
   const { id } = useParams();
+
+  const [currentStep, setCurrentStep] = useState(0);
 
   const condition = false;
 
@@ -60,27 +65,35 @@ const AdditionalPrivacyPage = () => {
           <>
             <MidPointLine />
             <div style={{ height: "10px" }}></div>
-            <Label>AI에게 추천받고 싶은 결과를 선택해주세요!</Label>
+            <Label>{"Label"}을(를) 어느 정도로 선호하시나요?</Label>
+
+            <div style={{ height: "20px" }}></div>
+            <ProgressBar
+              percent={currentStep * 25}
+              width={320}
+              filledBackground="linear-gradient(to right, #f0a00088, #f0a000)"
+            >
+              {Array.from({ length: 5 }).map((_, index) => (
+                <Step key={index}>
+                  {({ accomplished }) => (
+                    <div
+                      style={{
+                        width: 22,
+                        height: 22,
+                        borderRadius: "50%",
+                        backgroundColor: accomplished ? "#f0a000" : "lightgray",
+                      }}
+                      onClick={() => setCurrentStep(index)}
+                    />
+                  )}
+                </Step>
+              ))}
+            </ProgressBar>
             <div style={{ height: "15px" }}></div>
-            <SelectInput
-              required
-              label=""
-              result
-              option={[
-                { label: "남자", value: "0" },
-                { label: "여성", value: "1" },
-                { label: "남자", value: "0" },
-                { label: "여성", value: "1" },
-                { label: "남자", value: "0" },
-                { label: "여성", value: "1" },
-                { label: "남자", value: "0" },
-                { label: "여성", value: "1" },
-                { label: "남자", value: "0" },
-                { label: "여성", value: "1" },
-              ]}
-              onChange={() => {}}
-            />
-            <div style={{ height: "30px" }}></div>
+            <SubTitle>
+              선호하지 않아요 <span style={{ marginRight: "160px" }} /> 선호해요
+            </SubTitle>
+            <div style={{ height: "10px" }}></div>
           </>
         )}
         <Button onClick={() => {}}>

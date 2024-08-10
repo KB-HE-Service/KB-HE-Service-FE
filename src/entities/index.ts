@@ -2,6 +2,7 @@ export { Loading } from "./Loading";
 export { FirstLoading } from "./FirstLoading";
 export { StatusMessage } from "./StatusMessage";
 export {
+  LargeTitle,
   Title,
   SubTitle,
   Label,

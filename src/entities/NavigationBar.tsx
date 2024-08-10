@@ -15,11 +15,11 @@ export const NavigationBar = () => {
             navigation(PAGE_URL.Inferences);
           }}
         >
-          <div>AI 에게</div>추천 받기
+          <div>AI 서비스</div>사용하기
         </Button>
       ) : (
         <ClickedButton>
-          <div>AI 에게</div>추천 받기
+          <div>AI 에게</div>추천받기
         </ClickedButton>
       )}
       {pathname === PAGE_URL.Trainings || pathname === PAGE_URL.Inferences ? (
