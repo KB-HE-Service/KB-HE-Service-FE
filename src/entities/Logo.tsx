@@ -2,13 +2,13 @@ import styled from "@emotion/styled";
 
 const Bottom = styled.img`
   position: fixed;
-  bottom: 20px;
+  bottom: 10px;
   left: 50%;
   transform: translate(-50%, 0%);
 
   z-index: -1;
 
-  width: 170px;
+  width: 150px;
 `;
 
 const Top = styled.img`

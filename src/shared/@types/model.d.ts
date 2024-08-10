@@ -29,7 +29,10 @@ declare namespace Model {
     { id: "d-0"; value: string },
     { id: "d-1"; value: string },
     { id: "d-2"; value: string },
-    { id: "d-3"; value: string }
+    { id: "d-3"; value: string },
+    { id: "d-4"; value: string },
+    { id: "d-5"; value: string },
+    { id: "d-6"; value: string }
   ];
 
   //DTO

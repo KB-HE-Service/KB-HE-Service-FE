@@ -19,9 +19,8 @@ const AuthRouter = ({ children }: { children: React.ReactNode }) => {
   const { getModels } = MainRestService();
 
   useEffect(() => {
-    getModels().then(() => {
-      if (!getUserInfo()) navigate(PAGE_URL.Privacy);
-    });
+    getModels();
+    if (!getUserInfo()) navigate(PAGE_URL.Privacy);
   }, []);
 
   useEffect(() => {
