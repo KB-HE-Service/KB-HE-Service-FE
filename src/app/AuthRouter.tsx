@@ -1,14 +1,20 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { PAGE_URL, useUserStore } from "@/shared";
+import { PAGE_URL, getUserInfo, useDataStore } from "@/shared";
+
+import { createSnowflake } from "@/utils";
 
 const AuthRouter = ({ children }: { children: React.ReactNode }) => {
-  const isSignIn = useUserStore((state) => state.isSignIn);
   const navigate = useNavigate();
 
+  const snowflacke = createSnowflake();
+  const setClientId = useDataStore((state) => state.setClientId);
+
   useEffect(() => {
-    if (!isSignIn) navigate(PAGE_URL.SignIn);
+    console.log(snowflacke());
+    setClientId(snowflacke());
+    if (!getUserInfo()) navigate(PAGE_URL.Privacy);
   }, []);
 
   return <>{children}</>;

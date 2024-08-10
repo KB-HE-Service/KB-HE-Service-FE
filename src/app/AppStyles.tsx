@@ -1,8 +1,12 @@
 import { Global, css } from "@emotion/react";
 
 const Styles = css`
+  * {
+    font-family: "IBM Plex Sans KR", sans-serif;
+  }
+
   body {
-    font-family: "Spoqa Han Sans Neo", "sans-seri";
+    overflow-y: hidden;
   }
 `;
 
