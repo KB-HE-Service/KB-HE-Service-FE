@@ -32,6 +32,13 @@ declare namespace Model {
     { id: "d-3"; value: string }
   ];
 
+  //DTO
+  export interface getModelsResDto {
+    inferenceModels: Model[];
+    trainingModels: TrainingModel[];
+  }
+
+  //Store
   export interface Store {
     //State
     inferenceModels: Model[];

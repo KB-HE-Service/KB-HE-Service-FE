@@ -7,6 +7,7 @@ import {
   useDataStore,
   MainSocketService,
   DecSocketService,
+  MainRestService,
 } from "@/shared";
 
 const AuthRouter = ({ children }: { children: React.ReactNode }) => {
@@ -15,9 +16,12 @@ const AuthRouter = ({ children }: { children: React.ReactNode }) => {
   const modelId = useDataStore((state) => state.modelId);
   const { onOpen: mainSocketOn } = MainSocketService();
   const { onOpen: decSocketOn } = DecSocketService();
+  const { getModels } = MainRestService();
 
   useEffect(() => {
-    if (!getUserInfo()) navigate(PAGE_URL.Privacy);
+    getModels().then(() => {
+      if (!getUserInfo()) navigate(PAGE_URL.Privacy);
+    });
   }, []);
 
   useEffect(() => {

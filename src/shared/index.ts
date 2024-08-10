@@ -11,4 +11,6 @@ export { useModelsStore } from "./hooks/stores/useModelsStore";
 
 export { DecSocketService } from "./hooks/services/DecSocketService";
 export { MainSocketService } from "./hooks/services/MainSocketService";
+
+export { MainRestService } from "./hooks/services/MainRestService";
 export { EncRestService } from "./hooks/services/EncRestService";
