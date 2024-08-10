@@ -4,6 +4,7 @@ import { getUserInfo } from "@/shared";
 
 export const useDataStore = create<Socket.DataStore>((set, get) => ({
   //State
+  modelId: undefined,
   clientId: undefined, //메인 서버로 부터 할당 받은 자기의 식별자
   encClientId: undefined, //암호화 서버로부터 받은 자기의 암호화 식별자
   originDatas: [], //유저가 입력한 개인 정보
@@ -13,6 +14,9 @@ export const useDataStore = create<Socket.DataStore>((set, get) => ({
   inferenceResult: undefined,
 
   //Set Function
+  setModelId: (id) => {
+    set(() => ({ modelId: id }));
+  },
   setClientId: (id) => {
     set(() => ({ clientId: id }));
   },

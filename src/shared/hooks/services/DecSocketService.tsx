@@ -12,6 +12,8 @@ export const DecSocketService = () => {
   const token = useDataStore((state) => state.token);
 
   const onOpen = (id: string) => {
+    onClose();
+
     //create socket
     const newSocket = new WebSocket(`${URL}:ws/${id}`);
 

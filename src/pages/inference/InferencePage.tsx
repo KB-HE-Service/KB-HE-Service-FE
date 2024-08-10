@@ -1,4 +1,5 @@
 import { useNavigate, useParams } from "react-router";
+import { useEffect } from "react";
 
 import {
   MidContainer,
@@ -9,10 +10,23 @@ import {
   Button,
 } from "@/entities";
 import { HomeContainer } from "@/widget";
+import { useDataStore } from "@/shared";
+import { createSnowflake } from "@/utils";
 
 const InferencePage = () => {
   const { id } = useParams();
   const navigation = useNavigate();
+
+  const setClientId = useDataStore((state) => state.setClientId);
+  const setModelId = useDataStore((state) => state.setModelId);
+  const snowflacke = createSnowflake();
+
+  useEffect(() => {
+    if (id) {
+      setClientId(snowflacke());
+      setModelId(id);
+    }
+  }, []);
 
   return (
     <>

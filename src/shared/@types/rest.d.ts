@@ -4,10 +4,13 @@ declare namespace Rest {
     label: string;
   }
 
-  export type TrainingEncResDto = TrainingReqDto;
+  export interface TrainingEncResDto {
+    datas: string;
+    labels: string;
+  }
 
   export interface InferenceEncResDto {
-    id: string;
-    data: string;
+    ids: string;
+    datas: string;
   }
 }

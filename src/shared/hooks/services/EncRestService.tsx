@@ -3,7 +3,9 @@ import { encAPI } from "@/shared/configs/axios";
 
 import { useDataStore } from "../stores/useDataStore";
 
-export const MainRestService = () => {
+import { encryptWithPublicKey } from "@/utils";
+
+export const EncRestService = () => {
   const getOriginDatas = useDataStore((state) => state.getOriginDatas);
   const clientId = useDataStore((state) => state.clientId);
 
@@ -20,13 +22,14 @@ export const MainRestService = () => {
       body.unshift({ id: "ID", value: clientId });
 
       const {
-        data: { data, label },
-      } = (await encAPI.post("/{id}", {
-        data: body,
-      })) as AxiosResponse<Rest.TrainingEncResDto>;
+        data: { datas, labels },
+      } = (await encAPI.post(
+        "/encryption",
+        body
+      )) as AxiosResponse<Rest.TrainingEncResDto>;
 
-      setData(data);
-      setLabel(label);
+      setData(datas);
+      setLabel(labels);
     }
   };
 
@@ -38,13 +41,13 @@ export const MainRestService = () => {
       body.unshift({ id: "ID", value: clientId });
 
       const {
-        data: { data, id },
+        data: { datas, ids },
       } = (await encAPI.post("/{id}", {
         data: body,
       })) as AxiosResponse<Rest.InferenceEncResDto>;
 
-      setData(data);
-      setEncClientId(id);
+      setData(datas);
+      setEncClientId(ids);
     }
   };
 

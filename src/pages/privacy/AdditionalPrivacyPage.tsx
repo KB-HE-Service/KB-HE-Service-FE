@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
 
@@ -20,6 +20,8 @@ import {
   MidPointLine,
 } from "@/entities";
 
+import { EncRestService } from "@/shared";
+
 const AdditionalPrivacyPage = () => {
   const { id } = useParams();
 
@@ -28,17 +30,11 @@ const AdditionalPrivacyPage = () => {
 
   const condition = true;
 
-  (async () => {
-    const plainText = "조명근 화이팅!";
-    try {
-      const encryptedText = await encryptWithPublicKey(plainText);
-      console.log("Encrypted Text:", encryptedText);
-      const result = await decryptWithPrivateKey(encryptedText);
-      console.log("Result:", result);
-    } catch (error) {
-      console.error("Error during encryption:", error);
-    }
-  })();
+  const { postTrainingEnc } = EncRestService();
+
+  useEffect(() => {
+    postTrainingEnc();
+  }, []);
 
   return (
     <>
