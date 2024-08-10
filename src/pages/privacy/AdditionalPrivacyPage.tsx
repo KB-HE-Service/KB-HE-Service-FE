@@ -17,6 +17,7 @@ import {
 
 const AdditionalPrivacyPage = () => {
   const { id } = useParams();
+  console.log(id);
 
   const [currentStep, setCurrentStep] = useState(0);
 

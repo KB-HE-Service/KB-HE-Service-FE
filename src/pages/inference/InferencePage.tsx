@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 import {
   MidContainer,
@@ -12,6 +12,7 @@ import { HomeContainer } from "@/widget";
 
 const InferencePage = () => {
   const { id } = useParams();
+  const navigation = useNavigate();
 
   return (
     <>
@@ -35,7 +36,13 @@ const InferencePage = () => {
           <Explanation>
             입력하신 소중한 개인정보를 확인할 수 없습니다.
           </Explanation>
-          <Button onClick={() => {}}>AI 결과 확인하러 가기!</Button>
+          <Button
+            onClick={() => {
+              navigation(`/additionalprivacy/${id}`);
+            }}
+          >
+            AI 결과 확인하러 가기!
+          </Button>
         </MidContainer>
       </HomeContainer>
     </>

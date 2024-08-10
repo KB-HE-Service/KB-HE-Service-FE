@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 
 import {
   MidContainer,
@@ -12,10 +12,12 @@ import {
 import { HomeContainer } from "@/widget";
 
 import "react-step-progress-bar/styles.css";
-import { ProgressBar, Step } from "react-step-progress-bar";
+import { ProgressBar } from "react-step-progress-bar";
+import { PAGE_URL } from "@/shared";
 
 const TrainingPage = () => {
   const { id } = useParams();
+  const navigation = useNavigate();
 
   return (
     <>
@@ -48,7 +50,13 @@ const TrainingPage = () => {
           <Explanation>
             입력하신 소중한 개인정보를 확인할 수 없습니다.
           </Explanation>
-          <Button onClick={() => {}}>AI 개발에 기여하기!</Button>
+          <Button
+            onClick={() => {
+              navigation(`/additionalprivacy/${id}`);
+            }}
+          >
+            AI 개발에 기여하기!
+          </Button>
         </MidContainer>
       </HomeContainer>
     </>
