@@ -4,7 +4,7 @@ import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
 
 import { HomeContainer, SelectInput, InferenceResultModal } from "@/widget";
-import { encryptWithPublicKey } from "@/utils";
+import { encryptWithPublicKey, decryptWithPrivateKey } from "@/utils";
 
 import {
   Title,
@@ -25,10 +25,12 @@ const AdditionalPrivacyPage = () => {
   const condition = true;
 
   (async () => {
-    const plainText = "Hello, world!";
+    const plainText = "조명근 화이팅!";
     try {
       const encryptedText = await encryptWithPublicKey(plainText);
       console.log("Encrypted Text:", encryptedText);
+      const result = await decryptWithPrivateKey(encryptedText);
+      console.log("Result:", result);
     } catch (error) {
       console.error("Error during encryption:", error);
     }
