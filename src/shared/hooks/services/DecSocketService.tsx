@@ -3,12 +3,13 @@ import { useDataStore, useDecSocketStore } from "@/shared";
 const URL = import.meta.env.VITE_DEC_SERVER_URL;
 
 export const DecSocketService = () => {
-  //const setInferenceResult = useDataStore((state) => state.setInferenceResult);
-  const clientId = useDataStore((state) => state.clientId);
+  const encClientId = useDataStore((state) => state.encClientId);
 
   const setSocket = useDecSocketStore((state) => state.setSocket);
   const socket = useDecSocketStore((state) => state.socket);
   const addMessage = useDecSocketStore((state) => state.addMessage);
+
+  const token = useDataStore((state) => state.token);
 
   const onOpen = (id: string) => {
     //create socket
@@ -27,11 +28,11 @@ export const DecSocketService = () => {
     };
 
     //send id message
-    if (newSocket.readyState === WebSocket.OPEN && clientId) {
+    if (newSocket.readyState === WebSocket.OPEN && encClientId) {
       newSocket.send(
         JSON.stringify({
           mode: "ID",
-          id: clientId,
+          id: encClientId,
         })
       );
     } else {
@@ -52,5 +53,13 @@ export const DecSocketService = () => {
     } else console.log("There is something wrong with dec server socket");
   };
 
-  return { onOpen, onClose, sendMessage };
+  const sendToken = () => {
+    if (token)
+      sendMessage({
+        mode: "TOKEN",
+        token: token,
+      });
+  };
+
+  return { onOpen, onClose, sendMessage, sendToken };
 };

@@ -1,17 +1,22 @@
 import styled from "@emotion/styled";
-import { Background, MidContainer } from "@/entities";
+import { Background, MidContainer, Title } from "@/entities";
 
 export const InferenceResultModal = ({
   onClose,
+  name,
   result,
 }: {
   onClose: () => void;
+  name: string;
   result: string;
 }) => {
   return (
     <>
       <Background color="#0000008f" onClick={onClose} zIndex />
-      <Container>{result}</Container>
+      <Container>
+        <Title>{name}</Title>
+        {result}
+      </Container>
     </>
   );
 };

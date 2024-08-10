@@ -3,16 +3,13 @@ import { useDataStore, useMainSocketStore } from "@/shared";
 const URL = import.meta.env.VITE_MAIN_SERVER_URL;
 
 export const MainSocketService = () => {
-  /* const setClientId = useDataStore((state) => state.setClientId);
-
-  const someoneEncData = useDataStore((state) => state.someoneEncData);
-  const myEncData = useDataStore((state) => state.myEncData); */
-
-  const clientId = useDataStore((state) => state.clientId);
+  const encClientId = useDataStore((state) => state.encClientId);
 
   const setSocket = useMainSocketStore((state) => state.setSocket);
   const socket = useMainSocketStore((state) => state.socket);
   const addMessage = useMainSocketStore((state) => state.addMessage);
+
+  const data = useDataStore((state) => state.data);
 
   const onOpen = (id: string) => {
     //create socket
@@ -31,11 +28,11 @@ export const MainSocketService = () => {
     };
 
     //send id message
-    if (newSocket.readyState === WebSocket.OPEN && clientId) {
+    if (newSocket.readyState === WebSocket.OPEN && encClientId) {
       newSocket.send(
         JSON.stringify({
           mode: "ID",
-          id: clientId,
+          id: encClientId,
         })
       );
     } else {
@@ -56,5 +53,14 @@ export const MainSocketService = () => {
     } else console.log("There is something wrong with dec server socket");
   };
 
-  return { onOpen, onClose, sendMessage };
+  const sendInference = () => {
+    if (encClientId && data)
+      sendMessage({
+        mode: "INFERENCE",
+        id: encClientId,
+        data: data,
+      });
+  };
+
+  return { onOpen, onClose, sendMessage, sendInference };
 };

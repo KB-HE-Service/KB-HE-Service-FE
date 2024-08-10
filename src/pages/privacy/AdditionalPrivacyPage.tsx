@@ -4,7 +4,11 @@ import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
 
 import { HomeContainer, SelectInput, InferenceResultModal } from "@/widget";
-import { encryptWithPublicKey, decryptWithPrivateKey } from "@/utils";
+import {
+  encryptWithPublicKey,
+  decryptWithPrivateKey,
+  generateRSAKeyPair,
+} from "@/utils";
 
 import {
   Title,
@@ -44,6 +48,7 @@ const AdditionalPrivacyPage = () => {
             onResult(false);
           }}
           result={"어쩌고저쩌고"}
+          name={"KB 다이렉트 건강맞춤보장보험 AI"}
         />
       ) : null}
       <HomeContainer>

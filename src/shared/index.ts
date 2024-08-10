@@ -1,5 +1,5 @@
 export { PAGE_URL } from "./configs/path";
-export { API, setAccess } from "./configs/axios";
+export { mainAPI, encAPI } from "./configs/axios";
 export { storeUserInfo, removeUserInfo, getUserInfo } from "./configs/local";
 
 export { defaultPrivacy } from "./configs/privacy";

@@ -21,11 +21,6 @@ declare namespace Socket {
     result: string;
   }
 
-  export interface TrainingReqDto {
-    data: string;
-    ladel: string;
-  }
-
   export type MainServerMessageDto =
     | Socket.IdSendDto
     | Socket.InferenceSendDto
@@ -40,14 +35,22 @@ declare namespace Socket {
   export interface DataStore {
     //State
     clientId: string | undefined; //메인 서버로 부터 할당 받은 자기의 식별자
-    myEncData: string | undefined; //암호화 서버로부터 받은 자기의 암호화 이진 데이터
-    someoneEncData: string | undefined; //복호화 서버로부터 받은 임의 암호화 이진 데이터
+    encClientId: string | undefined; //암호화 서버로부터 받은 자기의 암호화 식별자
+    originDatas: Model.Datas; //유저가 입력한 개인 정보
+    data: string | undefined; //암호화 서버로부터 받은 자기의 암호화 이진 데이터
+    label: string | undefined; //암호화 서버로부터 받은 자기의 암호화 이진 데이터 (Training 시 라벨)
+    token: string | undefined; //복호화 서버로부터 받은 임의 암호화 이진 데이터
     inferenceResult: string | undefined; //AI 추론 결과 값
 
     //Set Function
     setClientId: (id: string) => void;
-    setMyEncData: (data: string) => void;
-    setSomeoneEncData: (data: string) => void;
+    setEncClientId: (id: string) => void;
+    resetOriginDatas: (model: Model.Model | Model.TrainingModel) => void;
+    setOriginData: (id: string, value: string) => void;
+    getOriginDatas: () => Model.Datas | null;
+    setData: (data: string) => void;
+    setLabel: (label: string) => void;
+    setToken: (data: string) => void;
     setInferenceResult: (result: string) => void;
   }
 

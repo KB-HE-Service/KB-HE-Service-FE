@@ -23,7 +23,7 @@ declare namespace Model {
     trainingStatus: number;
   }
 
-  export type Datas = { id: string; value: string }[];
+  export type Datas = { id: string; value: string | undefined }[];
 
   export type DefaultDatas = [
     { id: "d-0"; value: string },
