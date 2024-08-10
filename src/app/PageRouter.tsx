@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 import AppStyles from "./AppStyles";
-import AuthRouter from "./AuthRouter";
+import ControlRouter from "./ControlRouter";
 
 import { Loading } from "@/entities";
 
@@ -28,7 +28,7 @@ const PageRouter = () => (
   <Suspense fallback={<Loading />}>
     <RootRouter>
       <AppStyles />
-      <AuthRouter>
+      <ControlRouter>
         <Routes>
           <Route>
             <Route
@@ -46,7 +46,7 @@ const PageRouter = () => (
             />
           </Route>
         </Routes>
-      </AuthRouter>
+      </ControlRouter>
     </RootRouter>
   </Suspense>
 );

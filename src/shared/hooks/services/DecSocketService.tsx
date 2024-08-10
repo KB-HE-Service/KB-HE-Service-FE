@@ -1,4 +1,4 @@
-import { useDataStore, useDecSocketStore } from "@/shared";
+import { useDataStore, useDecSocketStore, useMainSocketStore } from "@/shared";
 
 const URL = import.meta.env.VITE_DEC_SERVER_URL;
 
@@ -8,6 +8,8 @@ export const DecSocketService = () => {
   const setSocket = useDecSocketStore((state) => state.setSocket);
   const socket = useDecSocketStore((state) => state.socket);
   const addMessage = useDecSocketStore((state) => state.addMessage);
+
+  const messages = useMainSocketStore((state) => state.messages);
 
   const token = useDataStore((state) => state.token);
 
@@ -56,11 +58,7 @@ export const DecSocketService = () => {
   };
 
   const sendToken = () => {
-    if (token)
-      sendMessage({
-        mode: "TOKEN",
-        token: token,
-      });
+    if (messages[0]) sendMessage(messages[0] as Socket.TokenDto);
   };
 
   return { onOpen, onClose, sendMessage, sendToken };

@@ -56,7 +56,7 @@ declare namespace Socket {
     setData: (data: string) => void;
     setLabel: (label: string) => void;
     setToken: (data: string) => void;
-    setInferenceResult: (result: string) => void;
+    setInferenceResult: (result: string | undefined) => void;
   }
 
   export interface SocketStore<M> {

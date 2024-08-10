@@ -13,6 +13,7 @@ import {
   SmallInputContainer,
   Button,
   MidPointLine,
+  Loading,
 } from "@/entities";
 
 import { EncRestService, useDataStore, useModelsStore } from "@/shared";
@@ -34,6 +35,7 @@ const AdditionalPrivacyPage = () => {
   const inferenceResult = useDataStore((state) => state.inferenceResult);
   const getQuery = useDataStore((state) => state.getQuery);
   const setOriginData = useDataStore((state) => state.setOriginData);
+  const setInferenceResult = useDataStore((state) => state.setInferenceResult);
 
   useEffect(() => {
     if (!inferenceModels.find((model) => model.id === id))
@@ -47,14 +49,19 @@ const AdditionalPrivacyPage = () => {
 
   return (
     <>
-      {result && model && inferenceResult ? (
-        <InferenceResultModal
-          onClose={() => {
-            onResult(false);
-          }}
-          result={inferenceResult}
-          name={model.explanation}
-        />
+      {result && model ? (
+        inferenceResult ? (
+          <InferenceResultModal
+            onClose={() => {
+              onResult(false);
+              setInferenceResult(undefined);
+            }}
+            result={inferenceResult}
+            name={model.explanation}
+          />
+        ) : (
+          <Loading />
+        )
       ) : null}
       <HomeContainer>
         <MidContainer>
