@@ -18,12 +18,13 @@ declare namespace Model {
   }
 
   export interface TrainingModel extends Model {
-    label: string;
+    labelName: string;
     trainingsGoal: number;
     trainingStatus: number;
   }
 
   export type Datas = { id: string; value: string }[];
+
   export type DefaultDatas = [
     { id: "d-0"; value: string },
     { id: "d-1"; value: string },

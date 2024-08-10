@@ -3,13 +3,18 @@ import styled from "@emotion/styled";
 export const Background = ({
   src,
   color,
+  onClick,
+  zIndex,
 }: {
   src?: string;
   color?: string;
+  onClick?: () => void;
+  zIndex?: boolean;
 }) => {
   const StyledBackground = styled.div`
     ${src ? `background-image: url(${src});` : ""}
     ${color ? `background-color: ${color};` : ""}
+    
 
     position: fixed;
     top: 0px;
@@ -22,7 +27,17 @@ export const Background = ({
     height: 100vh;
 
     z-index: -1;
+    ${zIndex ? "z-index: 10;" : ""}
   `;
+
+  if (onClick)
+    return (
+      <StyledBackground
+        onClick={() => {
+          onClick();
+        }}
+      />
+    );
 
   return <StyledBackground />;
 };
