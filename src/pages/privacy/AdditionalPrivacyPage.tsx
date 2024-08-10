@@ -23,6 +23,7 @@ const AdditionalPrivacyPage = () => {
 
   const [currentStep, setCurrentStep] = useState(0);
   const [result, onResult] = useState(false);
+  const [trainingDone, onTrainingDone] = useState(false);
 
   const [isInference, setIsInference] = useState(true);
   const [addtionalQuery, setAddtionalQuery] = useState<Model.Query[]>([]);
@@ -62,6 +63,16 @@ const AdditionalPrivacyPage = () => {
         ) : (
           <Loading />
         )
+      ) : null}
+
+      {trainingDone && model ? (
+        <InferenceResultModal
+          onClose={() => {
+            onTrainingDone(false);
+          }}
+          result="개발에 기여해주셔서 감사합니다!!"
+          name={model.explanation}
+        />
       ) : null}
       <HomeContainer>
         <MidContainer>
@@ -130,6 +141,7 @@ const AdditionalPrivacyPage = () => {
                 onResult(true);
                 postInferenceEnc();
               } else {
+                onTrainingDone(true);
                 postTrainingEnc();
               }
             }}

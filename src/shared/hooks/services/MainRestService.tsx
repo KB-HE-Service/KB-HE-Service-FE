@@ -22,7 +22,10 @@ export const MainRestService = () => {
   };
 
   const postTraining = async () => {
-    await mainAPI.post("/{id}", { id: encClientId, label: label });
+    (await mainAPI.post("/{id}", {
+      id: encClientId,
+      label: label,
+    })) as AxiosResponse;
   };
 
   return { getModels, postTraining };
