@@ -50,7 +50,10 @@ declare namespace Socket {
     getQuery: () => Model.Query[];
     setClientId: (id: string) => void;
     setEncClientId: (id: string) => void;
-    resetOriginDatas: (model: Model.Model | Model.TrainingModel) => void;
+    resetOriginDatas: (
+      model: Model.Model | Model.TrainingModel,
+      isTraining?: boolean
+    ) => void;
     setOriginData: (id: string, value: string) => void;
     getOriginDatas: () => Model.Datas | null;
     setData: (data: string) => void;

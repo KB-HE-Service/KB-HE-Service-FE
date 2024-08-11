@@ -33,13 +33,16 @@ const TrainingPage = () => {
   const snowflacke = createSnowflake();
 
   useEffect(() => {
-    if (id) {
-      setClientId(snowflacke());
-      setModelId(id);
-      setModel(trainingModels.find((model) => model.id === id)!);
-      resetOriginDatas(trainingModels.find((model) => model.id === id)!);
-    }
-  }, []);
+    if (!id && !trainingModels) return;
+
+    const model = trainingModels.find((model) => model.id === id);
+    if (!model) return;
+
+    setClientId(snowflacke());
+    setModelId(id!);
+    setModel(model);
+    resetOriginDatas(model);
+  }, [trainingModels]);
 
   return (
     <>

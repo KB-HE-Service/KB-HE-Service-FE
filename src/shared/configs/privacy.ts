@@ -3,13 +3,13 @@ export const defaultPrivacy: Model.Query[] = [
     id: "d-0",
     label: "나이",
     option: [
-      { label: "20대", value: "0" },
+      { label: "20대 이하", value: "0" },
       { label: "30대", value: "1" },
       { label: "40대", value: "2" },
       { label: "50대", value: "3" },
       { label: "60대", value: "4" },
       { label: "70대", value: "5" },
-      { label: "80대", value: "6" },
+      { label: "80대 이상", value: "6" },
     ],
   },
   {
@@ -71,7 +71,7 @@ export const defaultPrivacy: Model.Query[] = [
     ],
   },
   {
-    id: "d-5",
+    id: "d-6",
     label: "혈당",
     option: [
       { label: "99mg/dl 이하", value: "99" },
@@ -80,7 +80,7 @@ export const defaultPrivacy: Model.Query[] = [
     ],
   },
   {
-    id: "d-6",
+    id: "d-7",
     label: "가족 구성원",
     option: [
       { label: "부부 (1세대)", value: "0" },

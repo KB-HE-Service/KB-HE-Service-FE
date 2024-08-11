@@ -1,8 +1,9 @@
 import { useDataStore, useMainSocketStore } from "@/shared";
 
-const URL = import.meta.env.VITE_MAIN_SERVER_URL;
+const URL = import.meta.env.VITE_MAIN_SERVER_WS;
 
 export const MainSocketService = () => {
+  const clientId = useDataStore((state) => state.clientId);
   const encClientId = useDataStore((state) => state.encClientId);
 
   const setSocket = useMainSocketStore((state) => state.setSocket);
@@ -15,7 +16,7 @@ export const MainSocketService = () => {
     onClose();
 
     //create socket
-    const newSocket = new WebSocket(`${URL}:ws/${id}`);
+    const newSocket = new WebSocket(`${URL}/${id}`);
 
     //setting socket
     newSocket.onclose = (error) => {
@@ -29,18 +30,20 @@ export const MainSocketService = () => {
       addMessage(JSON.parse(event.data));
     };
 
-    //send id message
-    if (newSocket.readyState === WebSocket.OPEN && encClientId) {
-      newSocket.send(
-        JSON.stringify({
-          mode: "ID",
-          id: encClientId,
-        })
-      );
-    } else {
-      console.log("There is something wrong with dec server socket");
-      return;
-    }
+    newSocket.onopen = () => {
+      //send id message
+      if (newSocket.readyState === WebSocket.OPEN && clientId) {
+        newSocket.send(
+          JSON.stringify({
+            mode: "ID",
+            id: clientId,
+          })
+        );
+      } else {
+        console.log("There is something wrong with main server socket");
+        return;
+      }
+    };
 
     setSocket(newSocket);
   };

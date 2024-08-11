@@ -29,13 +29,16 @@ const InferencePage = () => {
   const snowflacke = createSnowflake();
 
   useEffect(() => {
-    if (id) {
-      setClientId(snowflacke());
-      setModelId(id);
-      setModel(inferenceModels.find((model) => model.id === id)!);
-      resetOriginDatas(inferenceModels.find((model) => model.id === id)!);
-    }
-  }, []);
+    if (!id && !inferenceModels) return;
+
+    const model = inferenceModels.find((model) => model.id === id);
+    if (!model) return;
+
+    setClientId(snowflacke());
+    setModelId(id!);
+    setModel(model);
+    resetOriginDatas(model);
+  }, [inferenceModels]);
 
   return (
     <>

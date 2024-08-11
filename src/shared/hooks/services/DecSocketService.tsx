@@ -1,8 +1,9 @@
 import { useDataStore, useDecSocketStore, useMainSocketStore } from "@/shared";
 
-const URL = import.meta.env.VITE_DEC_SERVER_URL;
+const URL = import.meta.env.VITE_DEC_SERVER_WS;
 
 export const DecSocketService = () => {
+  const clientId = useDataStore((state) => state.clientId);
   const encClientId = useDataStore((state) => state.encClientId);
 
   const setSocket = useDecSocketStore((state) => state.setSocket);
@@ -11,13 +12,13 @@ export const DecSocketService = () => {
 
   const messages = useMainSocketStore((state) => state.messages);
 
-  const token = useDataStore((state) => state.token);
+  //const token = useDataStore((state) => state.token);
 
   const onOpen = (id: string) => {
     onClose();
 
     //create socket
-    const newSocket = new WebSocket(`${URL}:ws/${id}`);
+    const newSocket = new WebSocket(`${URL}/${id}`);
 
     //setting socket
     newSocket.onclose = (error) => {
@@ -31,18 +32,20 @@ export const DecSocketService = () => {
       addMessage(JSON.parse(event.data));
     };
 
-    //send id message
-    if (newSocket.readyState === WebSocket.OPEN && encClientId) {
-      newSocket.send(
-        JSON.stringify({
-          mode: "ID",
-          id: encClientId,
-        })
-      );
-    } else {
-      console.log("There is something wrong with dec server socket");
-      return;
-    }
+    newSocket.onopen = () => {
+      //send id message
+      if (newSocket.readyState === WebSocket.OPEN && clientId) {
+        newSocket.send(
+          JSON.stringify({
+            mode: "ID",
+            id: clientId,
+          })
+        );
+      } else {
+        console.log("There is something wrong with dec server socket");
+        return;
+      }
+    };
 
     setSocket(newSocket);
   };

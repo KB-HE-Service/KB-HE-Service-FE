@@ -3,7 +3,7 @@ import { encAPI } from "@/shared/configs/axios";
 
 import { useDataStore } from "../stores/useDataStore";
 
-import { encryptWithPublicKey } from "@/utils";
+//import { encryptWithPublicKey } from "@/utils";
 
 export const EncRestService = () => {
   const getOriginDatas = useDataStore((state) => state.getOriginDatas);

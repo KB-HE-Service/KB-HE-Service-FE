@@ -14,7 +14,7 @@ declare namespace Model {
     id: string;
     name: string;
     explanation: string;
-    query: Query[];
+    queries: Query[];
   }
 
   export interface TrainingModel extends Model {

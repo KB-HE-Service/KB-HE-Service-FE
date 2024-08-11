@@ -15,14 +15,16 @@ export const MainRestService = () => {
   const getModels = async () => {
     const {
       data: { inferenceModels, trainingModels },
-    } = (await mainAPI.get("/models")) as AxiosResponse<Model.getModelsResDto>;
+    } = (await mainAPI.get(
+      "/combined-models"
+    )) as AxiosResponse<Model.getModelsResDto>;
 
     setInferenceModels(inferenceModels);
     setTrainingModels(trainingModels);
   };
 
   const postTraining = async () => {
-    (await mainAPI.post("/{id}", {
+    (await mainAPI.post("/training/{id}", {
       id: encClientId,
       label: label,
     })) as AxiosResponse;

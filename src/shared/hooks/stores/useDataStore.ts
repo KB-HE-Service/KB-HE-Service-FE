@@ -26,7 +26,7 @@ export const useDataStore = create<Socket.DataStore>((set, get) => ({
     const basicInfos = getUserInfo();
 
     if (get().model)
-      get().model!.query.map((query) => {
+      get().model!.queries.map((query) => {
         if (!basicInfos?.find((element) => element.id === query.id))
           additionQuery.push(query);
       });
@@ -39,11 +39,13 @@ export const useDataStore = create<Socket.DataStore>((set, get) => ({
   setEncClientId: (id) => {
     set(() => ({ encClientId: id }));
   },
-  resetOriginDatas: (model) => {
+  resetOriginDatas: (model, isTrining) => {
     const newOriginDatas: Model.Datas = [];
-    model.query.map((query) => {
+    model.queries.map((query) => {
       newOriginDatas.push({ id: query.id, value: undefined });
     });
+
+    if (isTrining) newOriginDatas.push({ id: "LABEL", value: undefined });
 
     const basicInfos = getUserInfo();
 
