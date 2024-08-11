@@ -25,8 +25,6 @@ export const MainRestService = () => {
   };
 
   const postTraining = async () => {
-    console.log(data);
-    console.log(label);
     if (modelId)
       await mainAPI.post(`/training/${modelId}`, {
         data: data,

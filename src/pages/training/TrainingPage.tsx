@@ -41,10 +41,8 @@ const TrainingPage = () => {
     setClientId(snowflacke());
     setModelId(id!);
     setModel(model);
-    resetOriginDatas(model);
+    resetOriginDatas(model, true);
   }, [trainingModels]);
-
-  console.log(model);
 
   return (
     <>

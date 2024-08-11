@@ -37,6 +37,7 @@ const AdditionalPrivacyPage = () => {
   const getQuery = useDataStore((state) => state.getQuery);
   const setOriginData = useDataStore((state) => state.setOriginData);
   const setInferenceResult = useDataStore((state) => state.setInferenceResult);
+  const getOriginDatas = useDataStore((state) => state.getOriginDatas);
 
   useEffect(() => {
     if (!inferenceModels.find((model) => model.id === id))
@@ -135,6 +136,8 @@ const AdditionalPrivacyPage = () => {
           )}
           <Button
             onClick={() => {
+              if (!getOriginDatas()) return;
+
               if (isInference) {
                 onResult(true);
                 postInferenceEnc();

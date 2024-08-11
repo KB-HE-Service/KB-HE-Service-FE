@@ -30,7 +30,7 @@ export const FirstLoading = () => {
           <MidContainer>
             <img src="/img/character.png" style={{ marginBottom: "10px" }} />
             <SubTitle>철저한 암호화 기술 기반</SubTitle>
-            <SubTitle>안전한 초개인화 AI 추천 서비스</SubTitle>
+            <SubTitle>안전한 AI 추천 서비스</SubTitle>
             <img src="/img/logo.png" width="140px" />
             <div style={{ height: "50px" }}></div>
             <DotLoader color="white" size={80} speedMultiplier={0.8} />

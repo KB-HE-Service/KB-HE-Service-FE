@@ -18,7 +18,7 @@ export const EncRestService = () => {
     const originDatas = getOriginDatas();
 
     if (originDatas) {
-      const body = originDatas;
+      const body = JSON.parse(JSON.stringify(originDatas));
       body.unshift({ id: "ID", value: clientId });
 
       const {
@@ -27,9 +27,6 @@ export const EncRestService = () => {
         "/encryption",
         body
       )) as AxiosResponse<Rest.TrainingEncResDto>;
-
-      console.log(datas);
-      console.log(labels);
 
       setData(datas);
       setLabel(labels);
@@ -40,7 +37,7 @@ export const EncRestService = () => {
     const originDatas = getOriginDatas();
 
     if (originDatas) {
-      const body = originDatas;
+      const body = JSON.parse(JSON.stringify(originDatas));
       body.unshift({ id: "ID", value: clientId });
 
       const {
@@ -49,9 +46,6 @@ export const EncRestService = () => {
         "/encryption",
         body
       )) as AxiosResponse<Rest.InferenceEncResDto>;
-
-      console.log(datas);
-      console.log(ids);
 
       setData(datas);
       setEncClientId(ids);

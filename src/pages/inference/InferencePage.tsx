@@ -49,7 +49,7 @@ const InferencePage = () => {
           <MidPointLine />
           <SubTitle>{model?.explanation}</SubTitle>
           <SubTitle>하단 버튼을 누르면 입력하신 정보를 기반으로</SubTitle>
-          <SubTitle>초개인화 된 AI 추천 결과를 확인할 수 있습니다.</SubTitle>
+          <SubTitle>AI 추천 결과를 확인할 수 있습니다.</SubTitle>
           <div style={{ height: "60px" }}></div>
           <img
             src="/img/character.png"

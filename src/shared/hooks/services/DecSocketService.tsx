@@ -46,8 +46,6 @@ export const DecSocketService = () => {
   };
 
   const sendMessage = (data: Socket.DecServerMessageDto) => {
-    console.log(socket);
-
     if (socket && socket.readyState === WebSocket.OPEN) {
       socket.send(JSON.stringify(data));
     } else console.log("There is something wrong with dec server socket");
