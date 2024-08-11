@@ -44,6 +44,8 @@ const TrainingPage = () => {
     resetOriginDatas(model);
   }, [trainingModels]);
 
+  console.log(model);
+
   return (
     <>
       <HomeContainer>
@@ -55,20 +57,19 @@ const TrainingPage = () => {
           <div style={{ height: "25px" }}></div>
 
           <Title>학습 진행도</Title>
-          <div style={{ height: "10px" }}></div>
           <SubTitle>여러분의 도움으로 이만큼 똑똑해지고 있어요!</SubTitle>
           <div style={{ height: "6px" }}></div>
           <ProgressBar
-            percent={model?.trainingStatus}
+            percent={(model?.trainingStatus * 100) / model?.trainingsGoal}
             width={348}
-            height={model?.trainingStatus}
+            height={30}
             filledBackground="linear-gradient(to right, #f0a00088, #f0a000)"
           ></ProgressBar>
 
           <div style={{ height: "40px" }}></div>
           <img
             src="/img/character.png"
-            style={{ width: "120px", marginBottom: "10px" }}
+            style={{ width: "100px", marginBottom: "10px" }}
           />
           <Explanation>모든 학습 과정은 암호화를 통해서 이뤄지며,</Explanation>
           <Explanation>본 기기를 제외한 어떤 기기와 서버에서도</Explanation>

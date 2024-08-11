@@ -70,8 +70,8 @@ const AdditionalPrivacyPage = () => {
           onClose={() => {
             onTrainingDone(false);
           }}
-          result="개발에 기여해주셔서 감사합니다!!"
-          name={model.explanation}
+          name={model.name}
+          result="99.99"
         />
       ) : null}
       <HomeContainer>
@@ -103,7 +103,7 @@ const AdditionalPrivacyPage = () => {
               <Label>{(model as Model.TrainingModel).labelName}을(를)</Label>
               <Label>어느 정도로 선호하시나요?</Label>
 
-              <div style={{ height: "20px" }}></div>
+              <div style={{ height: "12px" }}></div>
               <ProgressBar
                 percent={currentStep * 25}
                 width={320}
@@ -127,12 +127,11 @@ const AdditionalPrivacyPage = () => {
                   </Step>
                 ))}
               </ProgressBar>
-              <div style={{ height: "15px" }}></div>
+              <div style={{ height: "10px" }}></div>
               <SubTitle>
                 선호하지 않아요 <span style={{ marginRight: "160px" }} />{" "}
                 선호해요
               </SubTitle>
-              <div style={{ height: "10px" }}></div>
             </>
           )}
           <Button

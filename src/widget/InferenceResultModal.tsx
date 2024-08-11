@@ -1,5 +1,11 @@
 import styled from "@emotion/styled";
-import { Background, MidContainer, Title } from "@/entities";
+import {
+  Background,
+  MidContainer,
+  Label,
+  Title,
+  MidPointLine,
+} from "@/entities";
 
 export const InferenceResultModal = ({
   onClose,
@@ -8,14 +14,33 @@ export const InferenceResultModal = ({
 }: {
   onClose: () => void;
   name: string;
-  result: string;
+  result?: string;
 }) => {
   return (
     <>
       <Background color="#0000008f" onClick={onClose} zIndex />
       <Container>
-        <Title>{name}</Title>
-        <span>{result}</span>
+        <Label>{name}</Label>
+        <Title>{result ? "적합도 판단 결과" : "학습 완료!"}</Title>
+        <MidPointLine />
+        {result ? (
+          <>
+            <div style={{ height: "20px" }}></div>
+            <div style={{ fontSize: "20px" }}>사용자분께 본 상품은</div>
+            <Result>
+              <span>{result}</span>%
+            </Result>
+            <div style={{ fontSize: "20px" }}>적합 합니다!</div>
+          </>
+        ) : (
+          <>
+            <div style={{ height: "20px" }}></div>
+            <img src="/img/character2.png" style={{ width: "100px" }} />
+            <div style={{ fontSize: "17px", marginTop: "10px" }}>
+              개발에 기여해주셔서 감사합니다!
+            </div>
+          </>
+        )}
       </Container>
     </>
   );
@@ -29,8 +54,12 @@ const Container = styled(MidContainer)`
   border-radius: 10px;
 
   z-index: 11;
+`;
 
+const Result = styled.div`
+  font-size: 35px;
+  font-weight: bold;
   > span {
-    width: 80%;
+    color: #eb9c00;
   }
 `;

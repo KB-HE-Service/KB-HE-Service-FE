@@ -28,6 +28,9 @@ export const EncRestService = () => {
         body
       )) as AxiosResponse<Rest.TrainingEncResDto>;
 
+      console.log(datas);
+      console.log(labels);
+
       setData(datas);
       setLabel(labels);
     }
@@ -42,9 +45,13 @@ export const EncRestService = () => {
 
       const {
         data: { datas, ids },
-      } = (await encAPI.post("/{id}", {
-        data: body,
-      })) as AxiosResponse<Rest.InferenceEncResDto>;
+      } = (await encAPI.post(
+        "/encryption",
+        body
+      )) as AxiosResponse<Rest.InferenceEncResDto>;
+
+      console.log(datas);
+      console.log(ids);
 
       setData(datas);
       setEncClientId(ids);

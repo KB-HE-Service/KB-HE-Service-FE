@@ -13,18 +13,8 @@ export const MainSocketService = () => {
   const data = useDataStore((state) => state.data);
 
   const onOpen = (id: string) => {
-    onClose();
-
     //create socket
     const newSocket = new WebSocket(`${URL}/${id}`);
-
-    //setting socket
-    newSocket.onclose = (error) => {
-      console.log(error);
-    };
-    newSocket.onerror = (error) => {
-      console.log(error);
-    };
 
     newSocket.onmessage = (event: MessageEvent<string>) => {
       addMessage(JSON.parse(event.data));
@@ -53,6 +43,8 @@ export const MainSocketService = () => {
   };
 
   const sendMessage = (data: Socket.MainServerMessageDto) => {
+    console.log(socket);
+
     if (socket && socket.readyState === WebSocket.OPEN) {
       socket.send(JSON.stringify(data));
     } else console.log("There is something wrong with dec server socket");

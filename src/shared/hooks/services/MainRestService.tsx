@@ -4,8 +4,9 @@ import { useDataStore, useModelsStore } from "@/shared";
 import { AxiosResponse } from "axios";
 
 export const MainRestService = () => {
-  const encClientId = useDataStore((state) => state.encClientId);
+  const data = useDataStore((state) => state.data);
   const label = useDataStore((state) => state.label);
+  const modelId = useDataStore((state) => state.modelId);
 
   const setInferenceModels = useModelsStore(
     (state) => state.setInferenceModels
@@ -24,10 +25,13 @@ export const MainRestService = () => {
   };
 
   const postTraining = async () => {
-    (await mainAPI.post("/training/{id}", {
-      id: encClientId,
-      label: label,
-    })) as AxiosResponse;
+    console.log(data);
+    console.log(label);
+    if (modelId)
+      await mainAPI.post(`/training/${modelId}`, {
+        data: data,
+        label: label,
+      });
   };
 
   return { getModels, postTraining };

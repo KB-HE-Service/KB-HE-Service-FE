@@ -15,19 +15,10 @@ export const DecSocketService = () => {
   //const token = useDataStore((state) => state.token);
 
   const onOpen = (id: string) => {
-    onClose();
-
     //create socket
     const newSocket = new WebSocket(`${URL}/${id}`);
 
     //setting socket
-    newSocket.onclose = (error) => {
-      console.log(error);
-    };
-    newSocket.onerror = (error) => {
-      console.log(error);
-    };
-
     newSocket.onmessage = (event: MessageEvent<string>) => {
       addMessage(JSON.parse(event.data));
     };
@@ -55,6 +46,8 @@ export const DecSocketService = () => {
   };
 
   const sendMessage = (data: Socket.DecServerMessageDto) => {
+    console.log(socket);
+
     if (socket && socket.readyState === WebSocket.OPEN) {
       socket.send(JSON.stringify(data));
     } else console.log("There is something wrong with dec server socket");
