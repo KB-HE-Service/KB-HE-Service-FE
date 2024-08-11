@@ -71,7 +71,6 @@ const AdditionalPrivacyPage = () => {
             onTrainingDone(false);
           }}
           name={model.name}
-          result="99.99"
         />
       ) : null}
       <HomeContainer>
