@@ -89,7 +89,7 @@ const AdditionalPrivacyPage = () => {
                 key={element.id}
                 required
                 label={element.label}
-                option={element.option}
+                options={element.options}
                 onChange={(newValue) => {
                   if (newValue) setOriginData(element.id, newValue.value);
                 }}

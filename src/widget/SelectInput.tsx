@@ -101,13 +101,13 @@ const resultCustomStyles: StylesConfig<
 export const SelectInput = ({
   required,
   label,
-  option,
+  options,
   onChange,
   result,
 }: {
   required?: boolean;
   label: string;
-  option: Model.Option;
+  options: Model.Options;
   onChange: (newValue: SingleValue<{ label: string; value: string }>) => void;
   result?: boolean;
 }) => (
@@ -119,7 +119,7 @@ export const SelectInput = ({
           {label}
         </Label>
         <Select
-          options={option}
+          options={options}
           styles={customStyles}
           placeholder="클릭하여 선택"
           components={{
@@ -130,7 +130,7 @@ export const SelectInput = ({
       </Container>
     ) : (
       <Select
-        options={option}
+        options={options}
         styles={resultCustomStyles}
         placeholder="클릭하여 선택"
         components={{

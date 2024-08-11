@@ -46,7 +46,7 @@ const PrivacyPage = () => {
               key={privacy.id}
               required
               label={privacy.label}
-              option={privacy.option}
+              options={privacy.options}
               onChange={(
                 newValue: SingleValue<{ label: string; value: string }>
               ) => {

@@ -2,7 +2,7 @@ export const defaultPrivacy: Model.Query[] = [
   {
     id: "d-0",
     label: "나이",
-    option: [
+    options: [
       { label: "20대 이하", value: "0" },
       { label: "30대", value: "1" },
       { label: "40대", value: "2" },
@@ -15,7 +15,7 @@ export const defaultPrivacy: Model.Query[] = [
   {
     id: "d-1",
     label: "소득 분위",
-    option: [
+    options: [
       { label: "1분위", value: "0" },
       { label: "2분위", value: "1" },
       { label: "3분위", value: "2" },
@@ -31,7 +31,7 @@ export const defaultPrivacy: Model.Query[] = [
   {
     id: "d-2",
     label: "BMI",
-    option: [
+    options: [
       { label: "16.0 ~ 18.4", value: "17.25" },
       { label: "18.5 ~ 23.9", value: "21.25" },
       { label: "24.0 ~ 29.9", value: "27" },
@@ -43,7 +43,7 @@ export const defaultPrivacy: Model.Query[] = [
   {
     id: "d-3",
     label: "흡연 여부",
-    option: [
+    options: [
       { label: "비흡연자", value: "1" },
       { label: "흡연자", value: "0" },
     ],
@@ -51,7 +51,7 @@ export const defaultPrivacy: Model.Query[] = [
   {
     id: "d-4",
     label: "혈압 (수축기)",
-    option: [
+    options: [
       { label: "120mmHg 미만", value: "115" },
       { label: "120mmHg ~ 129mmHg", value: "125" },
       { label: "130mmHg ~ 139mmHg", value: "135" },
@@ -62,7 +62,7 @@ export const defaultPrivacy: Model.Query[] = [
   {
     id: "d-5",
     label: "혈압 (이완기)",
-    option: [
+    options: [
       { label: "80mmHg 미만", value: "75" },
       { label: "80mmHg ~ 84mmHg", value: "82.5" },
       { label: "85mmHg ~ 89mmHg", value: "87.5" },
@@ -73,7 +73,7 @@ export const defaultPrivacy: Model.Query[] = [
   {
     id: "d-6",
     label: "혈당",
-    option: [
+    options: [
       { label: "99mg/dl 이하", value: "99" },
       { label: "100mmHg ~ 125mmHg", value: "112.5" },
       { label: "126mmHg 이상", value: "126" },
@@ -82,7 +82,7 @@ export const defaultPrivacy: Model.Query[] = [
   {
     id: "d-7",
     label: "가족 구성원",
-    option: [
+    options: [
       { label: "부부 (1세대)", value: "0" },
       { label: "부부+자녀 (2세대)", value: "1" },
       { label: "부부+부모 (2세대)", value: "2" },

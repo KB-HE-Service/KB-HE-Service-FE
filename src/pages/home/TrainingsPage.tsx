@@ -12,7 +12,7 @@ const TrainingsPage = () => {
           key={element.id}
           title={element.name}
           subTitle={element.explanation}
-          path={`/inference/${element.id}`}
+          path={`/training/${element.id}`}
         />
       ))}
     </HomeContainer>

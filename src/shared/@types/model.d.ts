@@ -1,5 +1,5 @@
 declare namespace Model {
-  export type Option = {
+  export type Options = {
     label: string;
     value: string;
   }[];
@@ -7,7 +7,7 @@ declare namespace Model {
   export interface Query {
     id: string;
     label: string;
-    option: Option;
+    options: Options;
   }
 
   export interface Model {
