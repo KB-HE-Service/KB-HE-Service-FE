@@ -29,7 +29,7 @@ export const LoadingWrapper = styled.div`
   width: 100vw;
   height: 100vh;
 
-  background-color: #0000006a;
+  background-color: #000000a5;
 
   z-index: 10;
 

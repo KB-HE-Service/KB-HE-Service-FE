@@ -1,10 +1,9 @@
 import { useParams } from "react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
 
 import { HomeContainer, SelectInput, InferenceResultModal } from "@/widget";
-import { encryptWithPublicKey, decryptWithPrivateKey } from "@/utils";
 
 import {
   Title,
@@ -14,83 +13,96 @@ import {
   SmallInputContainer,
   Button,
   MidPointLine,
+  Loading,
 } from "@/entities";
+
+import { EncRestService, useDataStore, useModelsStore } from "@/shared";
 
 const AdditionalPrivacyPage = () => {
   const { id } = useParams();
 
   const [currentStep, setCurrentStep] = useState(0);
   const [result, onResult] = useState(false);
+  const [trainingDone, onTrainingDone] = useState(false);
 
-  const condition = true;
+  const [isInference, setIsInference] = useState(true);
+  const [addtionalQuery, setAddtionalQuery] = useState<Model.Query[]>([]);
 
-  (async () => {
-    const plainText = "조명근 화이팅!";
-    try {
-      const encryptedText = await encryptWithPublicKey(plainText);
-      console.log("Encrypted Text:", encryptedText);
-      const result = await decryptWithPrivateKey(encryptedText);
-      console.log("Result:", result);
-    } catch (error) {
-      console.error("Error during encryption:", error);
-    }
-  })();
+  const { postTrainingEnc, postInferenceEnc } = EncRestService();
+
+  const inferenceModels = useModelsStore((state) => state.inferenceModels);
+
+  const model = useDataStore((state) => state.model);
+  const inferenceResult = useDataStore((state) => state.inferenceResult);
+  const getQuery = useDataStore((state) => state.getQuery);
+  const setOriginData = useDataStore((state) => state.setOriginData);
+  const setInferenceResult = useDataStore((state) => state.setInferenceResult);
+
+  useEffect(() => {
+    if (!inferenceModels.find((model) => model.id === id))
+      setIsInference(false);
+    setAddtionalQuery(getQuery());
+  }, [model]);
+
+  useEffect(() => {
+    setOriginData("LABEL", `${currentStep}`);
+  }, [currentStep]);
 
   return (
     <>
-      {result ? (
+      {result && model ? (
+        inferenceResult ? (
+          <InferenceResultModal
+            onClose={() => {
+              onResult(false);
+              setInferenceResult(undefined);
+            }}
+            result={inferenceResult}
+            name={model.explanation}
+          />
+        ) : (
+          <Loading />
+        )
+      ) : null}
+
+      {trainingDone && model ? (
         <InferenceResultModal
           onClose={() => {
-            onResult(false);
+            onTrainingDone(false);
           }}
-          result={"어쩌고저쩌고"}
+          name={model.name}
         />
       ) : null}
       <HomeContainer>
         <MidContainer>
           <Title>
-            {condition ? "AI 서비스를 이용하기" : "AI 개발에 기여하기"} 위한
+            {isInference ? "AI 서비스를 이용하기" : "AI 개발에 기여하기"} 위한
           </Title>
           <Title>정보를 추가로 입력해주세요!</Title>
           <div style={{ height: "5px" }}></div>
           <SubTitle>입력하신 정보는 모두 안전하게</SubTitle>
           <SubTitle>암호화되어 처리되니 안심하고 입력해도 됩니다.</SubTitle>
           <SmallInputContainer>
-            <SelectInput
-              required
-              label="성별"
-              option={[
-                { label: "남자", value: "0" },
-                { label: "여성", value: "1" },
-              ]}
-              onChange={() => {}}
-            ></SelectInput>
-            <SelectInput
-              required
-              label="소득 분위"
-              option={[
-                { label: "남자", value: "0" },
-                { label: "여성", value: "1" },
-              ]}
-              onChange={() => {}}
-            ></SelectInput>
-            <SelectInput
-              required
-              label="가족 구성원"
-              option={[
-                { label: "남자", value: "0" },
-                { label: "여성", value: "1" },
-              ]}
-              onChange={() => {}}
-            ></SelectInput>
+            {addtionalQuery.map((element) => (
+              <SelectInput
+                key={element.id}
+                required
+                label={element.label}
+                options={element.options}
+                onChange={(newValue) => {
+                  if (newValue) setOriginData(element.id, newValue.value);
+                }}
+              ></SelectInput>
+            ))}
           </SmallInputContainer>
-          {condition ? null : (
+          {isInference ? null : (
             <>
               <MidPointLine />
               <div style={{ height: "10px" }}></div>
-              <Label>{"Label"}을(를) 어느 정도로 선호하시나요?</Label>
+              <Label>{(model as Model.TrainingModel).labelName}을(를)</Label>
+              <Label>어느 정도로 선호하시나요?</Label>
 
-              <div style={{ height: "20px" }}></div>
+              <div style={{ height: "12px" }}></div>
               <ProgressBar
                 percent={currentStep * 25}
                 width={320}
@@ -114,20 +126,25 @@ const AdditionalPrivacyPage = () => {
                   </Step>
                 ))}
               </ProgressBar>
-              <div style={{ height: "15px" }}></div>
+              <div style={{ height: "10px" }}></div>
               <SubTitle>
                 선호하지 않아요 <span style={{ marginRight: "160px" }} />{" "}
                 선호해요
               </SubTitle>
-              <div style={{ height: "10px" }}></div>
             </>
           )}
           <Button
             onClick={() => {
-              condition && onResult(true);
+              if (isInference) {
+                onResult(true);
+                postInferenceEnc();
+              } else {
+                onTrainingDone(true);
+                postTrainingEnc();
+              }
             }}
           >
-            {condition ? "AI 결과 확인하기!" : "AI 개발에 기여하기!"}
+            {isInference ? "AI 결과 확인하기!" : "AI 개발에 기여하기!"}
           </Button>
         </MidContainer>
       </HomeContainer>

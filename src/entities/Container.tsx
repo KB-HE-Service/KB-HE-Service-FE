@@ -21,7 +21,7 @@ export const InputContainer = styled(Container)`
   margin-top: 30px;
 
   width: 90%;
-  height: 300px;
+  height: 500px;
 
   border-radius: 5px;
 
@@ -34,7 +34,7 @@ export const SmallInputContainer = styled(Container)`
   margin-top: 30px;
 
   width: 90%;
-  height: 200px;
+  height: 270px;
 
   border-radius: 5px;
 

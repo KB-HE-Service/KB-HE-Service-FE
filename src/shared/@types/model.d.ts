@@ -1,5 +1,5 @@
 declare namespace Model {
-  export type Option = {
+  export type Options = {
     label: string;
     value: string;
   }[];
@@ -7,14 +7,14 @@ declare namespace Model {
   export interface Query {
     id: string;
     label: string;
-    option: Option;
+    options: Options;
   }
 
   export interface Model {
     id: string;
     name: string;
     explanation: string;
-    query: Query[];
+    queries: Query[];
   }
 
   export interface TrainingModel extends Model {
@@ -23,15 +23,25 @@ declare namespace Model {
     trainingStatus: number;
   }
 
-  export type Datas = { id: string; value: string }[];
+  export type Datas = { id: string; value: string | undefined }[];
 
   export type DefaultDatas = [
     { id: "d-0"; value: string },
     { id: "d-1"; value: string },
     { id: "d-2"; value: string },
-    { id: "d-3"; value: string }
+    { id: "d-3"; value: string },
+    { id: "d-4"; value: string },
+    { id: "d-5"; value: string },
+    { id: "d-6"; value: string }
   ];
 
+  //DTO
+  export interface getModelsResDto {
+    inferenceModels: Model[];
+    trainingModels: TrainingModel[];
+  }
+
+  //Store
   export interface Store {
     //State
     inferenceModels: Model[];

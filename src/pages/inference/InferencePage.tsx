@@ -1,4 +1,5 @@
 import { useNavigate, useParams } from "react-router";
+import { useEffect } from "react";
 
 import {
   MidContainer,
@@ -9,19 +10,44 @@ import {
   Button,
 } from "@/entities";
 import { HomeContainer } from "@/widget";
+import { useDataStore, useModelsStore } from "@/shared";
+import { createSnowflake } from "@/utils";
 
 const InferencePage = () => {
   const { id } = useParams();
   const navigation = useNavigate();
+
+  const inferenceModels = useModelsStore((state) => state.inferenceModels);
+
+  const resetOriginDatas = useDataStore((state) => state.resetOriginDatas);
+  const setClientId = useDataStore((state) => state.setClientId);
+  const setModelId = useDataStore((state) => state.setModelId);
+  const setModel = useDataStore((state) => state.setModel);
+
+  const model = useDataStore((state) => state.model);
+
+  const snowflacke = createSnowflake();
+
+  useEffect(() => {
+    if (!id && !inferenceModels) return;
+
+    const model = inferenceModels.find((model) => model.id === id);
+    if (!model) return;
+
+    setClientId(snowflacke());
+    setModelId(id!);
+    setModel(model);
+    resetOriginDatas(model);
+  }, [inferenceModels]);
 
   return (
     <>
       <HomeContainer>
         <MidContainer>
           <div style={{ height: "20px" }}></div>
-          <LargeTitle>KB 보험 추천 AI</LargeTitle>
+          <LargeTitle>{model?.name}</LargeTitle>
           <MidPointLine />
-          <SubTitle>사용자에 가장 적합한 보험을 추천하는 AI입니다.</SubTitle>
+          <SubTitle>{model?.explanation}</SubTitle>
           <SubTitle>하단 버튼을 누르면 입력하신 정보를 기반으로</SubTitle>
           <SubTitle>초개인화 된 AI 추천 결과를 확인할 수 있습니다.</SubTitle>
           <div style={{ height: "60px" }}></div>

@@ -23,6 +23,9 @@ const PrivacyPage = () => {
     { id: "d-1", value: "" },
     { id: "d-2", value: "" },
     { id: "d-3", value: "" },
+    { id: "d-4", value: "" },
+    { id: "d-5", value: "" },
+    { id: "d-6", value: "" },
   ]);
 
   const navigate = useNavigate();
@@ -43,7 +46,7 @@ const PrivacyPage = () => {
               key={privacy.id}
               required
               label={privacy.label}
-              option={privacy.option}
+              options={privacy.options}
               onChange={(
                 newValue: SingleValue<{ label: string; value: string }>
               ) => {
