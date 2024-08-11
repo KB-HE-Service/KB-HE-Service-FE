@@ -42,7 +42,7 @@ export const useDataStore = create<Socket.DataStore>((set, get) => ({
   resetOriginDatas: (model, isTrining) => {
     const newOriginDatas: Model.Datas = [];
     model.queries.map((query) => {
-      newOriginDatas.push({ id: query.id, value: undefined });
+      newOriginDatas.push({ id: query.id, value: "0" });
     });
 
     if (isTrining) newOriginDatas.push({ id: "LABEL", value: undefined });
@@ -61,8 +61,8 @@ export const useDataStore = create<Socket.DataStore>((set, get) => ({
     set(() => ({ originDatas: newOriginDatas }));
   },
   setOriginData: (id: string, value: string) => {
-    set((state) => {
-      const newOriginDatas = state.originDatas;
+    set(() => {
+      const newOriginDatas = get().originDatas;
       const index = newOriginDatas.findIndex(
         (originData) => originData.id === id
       );

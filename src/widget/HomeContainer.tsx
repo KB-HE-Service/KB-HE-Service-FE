@@ -22,7 +22,7 @@ export const HomeContainer = ({ children }: { children: React.ReactNode }) => {
         {pathname === PAGE_URL.Inferences || pathname === PAGE_URL.Trainings ? (
           <Continue>
             <img src="/img/character2.png"></img>
-            <span>안전한 초개인화 AI 서비스를 위한</span>
+            <span>안전한 AI 서비스를 위한</span>
             <span>KB HI의 모험은 계속됩니다!</span>
           </Continue>
         ) : null}

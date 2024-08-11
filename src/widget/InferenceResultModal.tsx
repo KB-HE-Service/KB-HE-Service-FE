@@ -28,7 +28,14 @@ export const InferenceResultModal = ({
             <div style={{ height: "20px" }}></div>
             <div style={{ fontSize: "20px" }}>사용자분께 본 상품은</div>
             <Result>
-              <span>{result}</span>%
+              <span>
+                {result[0]}
+                {result[1]}
+                {result[2]}
+                {result[3]}
+                {result[4]}
+              </span>
+              %
             </Result>
             <div style={{ fontSize: "20px" }}>적합 합니다!</div>
           </>
